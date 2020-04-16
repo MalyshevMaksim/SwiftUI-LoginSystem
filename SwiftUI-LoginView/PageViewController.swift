@@ -12,11 +12,12 @@ struct PageViewController: UIViewControllerRepresentable {
     
     // An array that provides the views to display as a page
     var viewControllers: [UIViewController]
+    @Binding var currentPage: Int
     
     func makeUIViewController(context: Context) -> UIPageViewController {
         let pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
-        pageController.delegate   = context.coordinator
         pageController.dataSource = context.coordinator
+        pageController.delegate = context.coordinator
         return pageController
     }
     
@@ -62,11 +63,12 @@ extension Coordinator: UIPageViewControllerDataSource {
 }
 
 extension Coordinator: UIPageViewControllerDelegate {
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return parent.viewControllers.count
-    }
-    
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        return 0
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if completed,
+            let visibleViewController = pageViewController.viewControllers?.first,
+            let index = parent.viewControllers.firstIndex(of: visibleViewController)
+        {
+            parent.currentPage = index
+        }
     }
 }
