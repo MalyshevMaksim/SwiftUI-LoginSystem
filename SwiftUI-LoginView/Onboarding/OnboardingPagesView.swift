@@ -16,11 +16,14 @@ var artists = [
 
 struct OnboardingView<Page: View>: View {
     var viewControllers: [UIHostingController<Page>]
+    @State private var currentPage = 0
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .bottom) {
             Color.init(#colorLiteral(red: 0.937254902, green: 0.937254902, blue: 0.9568627451, alpha: 1))
-            PageViewController(viewControllers: viewControllers)
+            PageViewController(viewControllers: viewControllers, currentPage: $currentPage)
+            PageControl(numberOfPage: viewControllers.count, currentPage: $currentPage)
+                .padding(10)
         }
         .frame(width: 320, height: 450, alignment: .center)
         .cornerRadius(25)

@@ -10,12 +10,11 @@ import SwiftUI
 
 struct OnboardingPageView: View {
     @State private var isApp = false
+    @State private var isDetailPresented = false
     
     var imageName: String
     var title: String
     var text: String
-    
-    var buttonGradient = LinearGradient(gradient: Gradient(colors: [Color.init(#colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)), Color.init(#colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1))]), startPoint: .bottomLeading, endPoint: .topTrailing)
     
     var customTransition: AnyTransition {
         let transition = AnyTransition.move(edge: .trailing)
@@ -39,7 +38,8 @@ struct OnboardingPageView: View {
                     .bold()
                     .frame(width: 300)
                     .font(.system(size: 22))
-                    .animation(Animation.spring().delay(0.1)).transition(customTransition)
+                    .animation(Animation.spring().delay(0.1))
+                    .transition(customTransition)
             }
             
             if isApp {
@@ -48,21 +48,24 @@ struct OnboardingPageView: View {
                     .font(.footnote)
                     .multilineTextAlignment(.center)
                     .padding(10)
-                    .animation(Animation.spring().delay(0.2)).transition(customTransition)
+                    .animation(Animation.spring().delay(0.2))
+                    .transition(customTransition)
             }
             
-            Button(action: { }) {
+            Button(action: { self.isDetailPresented = true }) {
                 Text("Show more info")
                     .bold()
                     .font(.headline)
             }
+            .sheet(isPresented: $isDetailPresented, content: {
+                OnboardingDetailView()
+            })
             .padding(10)
         }
-        .onAppear() {
+        .onAppear {
             self.isApp = true
-            
         }
-        .onDisappear() {
+        .onDisappear {
             self.isApp = false
         }
         .animation(.spring())
