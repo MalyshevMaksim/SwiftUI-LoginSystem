@@ -1,18 +1,14 @@
 //
-//  LoginPageView.swift
+//  RegistrationPageView.swift
 //  SwiftUI-LoginView
 //
-//  Created by Максим on 16.04.2020.
+//  Created by Максим on 17.04.2020.
 //  Copyright © 2020 Максим. All rights reserved.
 //
 
 import SwiftUI
 
-struct LoginPageView: View {
-    @State private var email = ""
-    @State private var password = ""
-    @State private var confirmemail = ""
-    
+struct RegistrationPageView: View {
     var buttonGradient = LinearGradient(
         gradient: Gradient(colors: [Color.init(#colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)), Color.init(#colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1))]),
         startPoint: .topLeading,
@@ -20,7 +16,7 @@ struct LoginPageView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Create an account")
+            Text("Login to account")
                 .font(.system(size: 24))
                 .bold()
                 .padding(.bottom, 5)
@@ -35,14 +31,14 @@ struct LoginPageView: View {
                         .fill(buttonGradient)
                         .frame(width: 270, height: 50, alignment: .center)
                         .overlay(
-                            Text("Continue")
+                            Text("Login")
                                 .foregroundColor(.white)
                                 .bold())
                         .cornerRadius(15)
                 }
                 .padding(.bottom, 5)
                 
-                Text("Already have an account ?")
+                Text("No account ?")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
@@ -52,8 +48,8 @@ struct LoginPageView: View {
     }
 }
 
-struct LoginPageView_Previews: PreviewProvider {
+struct RegistrationPageView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginPageView()
+        RegistrationPageView()
     }
 }
