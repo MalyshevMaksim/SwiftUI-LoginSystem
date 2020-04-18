@@ -9,8 +9,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isOnboarding = true
+
     var body: some View {
-        Text("Hello, World!")
+        return Group {
+            if isOnboarding {
+                OnboardingViewController(isGetStarted: $isOnboarding)
+            }
+            else {
+                LoginView()
+            }
+        }
     }
 }
 

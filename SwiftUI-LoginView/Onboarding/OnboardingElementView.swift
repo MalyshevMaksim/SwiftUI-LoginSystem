@@ -20,7 +20,7 @@ struct OnboardingPageView: View {
         let transition = AnyTransition.move(edge: .trailing)
             .combined(with: .scale(scale: 0.1, anchor: .trailing))
             .combined(with: .opacity)
-      return transition
+        return transition
     }
     
     var body: some View {

@@ -12,7 +12,6 @@ struct OnboardingDetailView: View {
     var body: some View {
         NavigationView {
             Text("")
-            
             .navigationBarTitle("Billie Elish")
         }
     }

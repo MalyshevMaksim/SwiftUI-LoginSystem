@@ -15,14 +15,18 @@ struct PageViewController: UIViewControllerRepresentable {
     @Binding var currentPage: Int
     
     func makeUIViewController(context: Context) -> UIPageViewController {
-        let pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+        let pageController = UIPageViewController(
+            transitionStyle: .scroll,
+            navigationOrientation: .horizontal)
         pageController.dataSource = context.coordinator
         pageController.delegate = context.coordinator
+        
         return pageController
     }
     
     func updateUIViewController(_ pageViewController: UIPageViewController, context: Context) {
-        pageViewController.setViewControllers([viewControllers[0]], direction: .forward, animated: true)
+        pageViewController.setViewControllers(
+            [viewControllers[currentPage]], direction: .forward, animated: true)
     }
     
     func makeCoordinator() -> Coordinator {
