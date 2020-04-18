@@ -27,14 +27,43 @@ struct LoginPageView: View {
         endPoint: .bottomTrailing)
     
     var body: some View {
-        VStack {
+        var title = ""
+        var subtitle = ""
+        var buttonText = ""
+        var buttonSubtext = ""
+        var swipeText = ""
+        
+        switch pageState {
+            case .login:
+                title = "Login to account"
+                buttonText = "Sign in"
+                buttonSubtext = "No account ?"
+                subtitle = "Please enter your credentials"
+                swipeText = "Swipe Up"
+            case .registration:
+                title = "Create an account"
+                buttonText = "Continue"
+                buttonSubtext = "Already have an account ?"
+                subtitle = "Please enter your credentials"
+                swipeText = "Swipe Down"
+            case .forgotPassword:
+                title = "Forgot your password ?"
+                buttonText = "Continue"
+                buttonSubtext = "Return to login ?"
+                subtitle = "Please enter your email"
+                swipeText = "Swipe Up"
+        }
+        
+        return VStack {
             VStack(alignment: .leading) {
-                Text(pageState == pageStatesEnum.registration ? "Login to account" : "Create an account")
+                Text(title)
                     .font(.system(size: 24))
                     .bold()
                     .padding(.bottom, 5)
-                Text("Please enter your credentials")
+                    .animation(.none)
+                Text(subtitle)
                     .foregroundColor(.secondary)
+                    .animation(.none)
             }
             .frame(minWidth: 0, maxWidth: .infinity, alignment: Alignment.topLeading)
             .padding(.horizontal, 40)
@@ -66,15 +95,16 @@ struct LoginPageView: View {
                         .fill(buttonGradient)
                         .frame(width: 300, height: 50, alignment: .center)
                         .overlay(
-                            Text("Sign in")
+                            Text(buttonText)
                                 .foregroundColor(.white)
                                 .bold())
+                                .animation(.none)
                         .cornerRadius(15)
                 }
                 .padding(.bottom, 10)
                 
                 HStack {
-                    Text("No account")
+                    Text(buttonSubtext)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     Button(action: {
@@ -86,11 +116,12 @@ struct LoginPageView: View {
                         }
                     })
                     {
-                        Text("Swipe Down")
+                        Text(swipeText)
                             .bold()
                             .font(.subheadline)
                     }
                 }
+                .animation(.none)
             }
             .padding(.bottom, 50)
         }

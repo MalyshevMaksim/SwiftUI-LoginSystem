@@ -38,11 +38,7 @@ struct LoginView: View {
         return ZStack {
             backgroundGradient
             VStack {
-                ZStack {
-                    EmptyView()
-                }
                 Spacer()
-                
                 if isPagePresented {
                     ZStack {
                         Color.white
@@ -57,11 +53,11 @@ struct LoginView: View {
                                     .transition(customTransition)
                         }
                     }
-                    .animation(Animation.spring())
-                    .transition(customTransition)
                     .frame(height: gestureMenuHeight)
                     .cornerRadius(20)
                     .shadow(radius: 10)
+                    .animation(Animation.spring())
+                    .transition(customTransition)
                 }
             }
         }

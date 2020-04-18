@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A048DB140422F5F45FF965DA /* Pods_SwiftUI_LoginView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F38359FA8C528B63190C42 /* Pods_SwiftUI_LoginView.framework */; };
+		B526833B244BC84A001E2A3F /* FirebaseSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B526833A244BC84A001E2A3F /* FirebaseSession.swift */; };
 		B5A683AA24474E8E00892E03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A683A924474E8E00892E03 /* AppDelegate.swift */; };
 		B5A683AC24474E8E00892E03 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A683AB24474E8E00892E03 /* SceneDelegate.swift */; };
 		B5A683AE24474E8E00892E03 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A683AD24474E8E00892E03 /* ContentView.swift */; };
@@ -22,9 +24,13 @@
 		B5ABD3352448EF5600C6A4F0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD3342448EF5600C6A4F0 /* LoginView.swift */; };
 		B5ABD3372448FD4900C6A4F0 /* LoginPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD3362448FD4900C6A4F0 /* LoginPageView.swift */; };
 		B5ABD345244A6A9300C6A4F0 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD344244A6A9300C6A4F0 /* TextFieldView.swift */; };
+		B5F61EA1244BAA6400FEE0EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5F61EA0244BAA6400FEE0EB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		54F38359FA8C528B63190C42 /* Pods_SwiftUI_LoginView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUI_LoginView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B1D3FBD0C8A072638BA5B0B /* Pods-SwiftUI-LoginView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUI-LoginView.release.xcconfig"; path = "Target Support Files/Pods-SwiftUI-LoginView/Pods-SwiftUI-LoginView.release.xcconfig"; sourceTree = "<group>"; };
+		B526833A244BC84A001E2A3F /* FirebaseSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSession.swift; sourceTree = "<group>"; };
 		B5A683A624474E8E00892E03 /* SwiftUI-LoginView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI-LoginView.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A683A924474E8E00892E03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5A683AB24474E8E00892E03 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +48,8 @@
 		B5ABD3342448EF5600C6A4F0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B5ABD3362448FD4900C6A4F0 /* LoginPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageView.swift; sourceTree = "<group>"; };
 		B5ABD344244A6A9300C6A4F0 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		B5F61EA0244BAA6400FEE0EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E810B4110D991516F607CB7F /* Pods-SwiftUI-LoginView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUI-LoginView.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUI-LoginView/Pods-SwiftUI-LoginView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,17 +57,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A048DB140422F5F45FF965DA /* Pods_SwiftUI_LoginView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7BFC11D2E31B4F7135C65A87 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				54F38359FA8C528B63190C42 /* Pods_SwiftUI_LoginView.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B5A6839D24474E8E00892E03 = {
 			isa = PBXGroup;
 			children = (
 				B5A683A824474E8E00892E03 /* SwiftUI-LoginView */,
 				B5A683A724474E8E00892E03 /* Products */,
+				B6126006F392D024C7D5C23D /* Pods */,
+				7BFC11D2E31B4F7135C65A87 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,10 +98,12 @@
 				B5A683AB24474E8E00892E03 /* SceneDelegate.swift */,
 				B5A683A924474E8E00892E03 /* AppDelegate.swift */,
 				B5A683AD24474E8E00892E03 /* ContentView.swift */,
+				B526833A244BC84A001E2A3F /* FirebaseSession.swift */,
 				B5A683C32447BBB400892E03 /* PageControl.swift */,
 				B5A683BD2447504700892E03 /* PageViewController.swift */,
 				B5A683AF24474E9000892E03 /* Assets.xcassets */,
 				B5A683B424474E9000892E03 /* LaunchScreen.storyboard */,
+				B5F61EA0244BAA6400FEE0EB /* GoogleService-Info.plist */,
 				B5A683B724474E9000892E03 /* Info.plist */,
 				B5A683B124474E9000892E03 /* Preview Content */,
 			);
@@ -118,6 +139,15 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		B6126006F392D024C7D5C23D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E810B4110D991516F607CB7F /* Pods-SwiftUI-LoginView.debug.xcconfig */,
+				8B1D3FBD0C8A072638BA5B0B /* Pods-SwiftUI-LoginView.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -125,9 +155,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B5A683BA24474E9000892E03 /* Build configuration list for PBXNativeTarget "SwiftUI-LoginView" */;
 			buildPhases = (
+				B742D08BA6EDC42A250B3D32 /* [CP] Check Pods Manifest.lock */,
 				B5A683A224474E8E00892E03 /* Sources */,
 				B5A683A324474E8E00892E03 /* Frameworks */,
 				B5A683A424474E8E00892E03 /* Resources */,
+				A87AF42975CC520F84B14B29 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -177,12 +209,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5A683B624474E9000892E03 /* LaunchScreen.storyboard in Resources */,
+				B5F61EA1244BAA6400FEE0EB /* GoogleService-Info.plist in Resources */,
 				B5A683B324474E9000892E03 /* Preview Assets.xcassets in Resources */,
 				B5A683B024474E9000892E03 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A87AF42975CC520F84B14B29 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftUI-LoginView/Pods-SwiftUI-LoginView-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftUI-LoginView/Pods-SwiftUI-LoginView-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftUI-LoginView/Pods-SwiftUI-LoginView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B742D08BA6EDC42A250B3D32 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwiftUI-LoginView-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B5A683A224474E8E00892E03 /* Sources */ = {
@@ -197,6 +272,7 @@
 				B5A683AE24474E8E00892E03 /* ContentView.swift in Sources */,
 				B5ABD32F244894C700C6A4F0 /* OnboardingDetailView.swift in Sources */,
 				B5ABD3312448E12B00C6A4F0 /* OnboardingView.swift in Sources */,
+				B526833B244BC84A001E2A3F /* FirebaseSession.swift in Sources */,
 				B5ABD345244A6A9300C6A4F0 /* TextFieldView.swift in Sources */,
 				B5ABD3372448FD4900C6A4F0 /* LoginPageView.swift in Sources */,
 				B5ABD3352448EF5600C6A4F0 /* LoginView.swift in Sources */,
@@ -334,6 +410,7 @@
 		};
 		B5A683BB24474E9000892E03 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E810B4110D991516F607CB7F /* Pods-SwiftUI-LoginView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -354,6 +431,7 @@
 		};
 		B5A683BC24474E9000892E03 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B1D3FBD0C8A072638BA5B0B /* Pods-SwiftUI-LoginView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
