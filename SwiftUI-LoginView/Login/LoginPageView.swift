@@ -8,11 +8,18 @@
 
 import SwiftUI
 
+enum pageStatesEnum {
+    case registration
+    case login
+    case forgotPassword
+}
+
 struct LoginPageView: View {
-    @Binding var isLogin: Bool
+    @Binding var pageState: pageStatesEnum
+    
     @State private var email = ""
     @State private var password = ""
-    @State private var confirmemail = ""
+    @State private var confirmPassword = ""
     
     var buttonGradient = LinearGradient(
         gradient: Gradient(colors: [Color.init(#colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)), Color.init(#colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1))]),
@@ -21,27 +28,33 @@ struct LoginPageView: View {
     
     var body: some View {
         VStack {
-            Text(isLogin ? "Login to account" : "Create an account")
-                .font(.system(size: 24))
-                .bold()
-                .padding(.bottom, 5)
-            Text("Please enter your credentials")
-                .foregroundColor(.secondary)
-            
+            VStack(alignment: .leading) {
+                Text(pageState == pageStatesEnum.registration ? "Login to account" : "Create an account")
+                    .font(.system(size: 24))
+                    .bold()
+                    .padding(.bottom, 5)
+                Text("Please enter your credentials")
+                    .foregroundColor(.secondary)
+            }
+            .frame(minWidth: 0, maxWidth: .infinity, alignment: Alignment.topLeading)
+            .padding(.horizontal, 40)
+
             Spacer()
             
             VStack {
                 TextFieldView(string: $email, header: "Email", placeholder: "Enter your email", iconName: "envelope.fill")
-                    .padding()
-                    .padding(.horizontal, 25)
-                TextFieldView(string: $password, header: "Password", placeholder: "Enter your password", iconName: "lock.open.fill")
-                    .padding()
-                    .padding(.horizontal, 25)
+                    .padding(.vertical)
+                    .padding(.horizontal, 40)
+                if pageState != pageStatesEnum.forgotPassword {
+                    TextFieldView(string: $password, passwordMode: true, header: "Password", placeholder: "Enter your password", iconName: "lock.open.fill")
+                        .padding(.vertical)
+                        .padding(.horizontal, 40)
+                }
                 
-                if !isLogin {
-                    TextFieldView(string: $password, header: "Confirm password", placeholder: "Confirm your password", iconName: "repeat")
-                    .padding()
-                    .padding(.horizontal, 25)
+                if pageState == pageStatesEnum.registration {
+                    TextFieldView(string: $confirmPassword, passwordMode: true, header: "Confirm password", placeholder: "Confirm your password", iconName: "repeat")
+                        .padding(.vertical)
+                        .padding(.horizontal, 40)
                 }
             }
             .padding(.bottom, 30)
@@ -51,21 +64,29 @@ struct LoginPageView: View {
                 Button(action: {}) {
                     Rectangle()
                         .fill(buttonGradient)
-                        .frame(width: 270, height: 50, alignment: .center)
+                        .frame(width: 300, height: 50, alignment: .center)
                         .overlay(
-                            Text(isLogin ? "Sign in" : "Continue")
+                            Text("Sign in")
                                 .foregroundColor(.white)
                                 .bold())
                         .cornerRadius(15)
                 }
-                .padding(.bottom, 5)
+                .padding(.bottom, 10)
                 
                 HStack {
-                    Text(isLogin ? "No account ?" : "Already have an account ?")
+                    Text("No account")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
-                    Button(action: { self.isLogin.toggle() }) {
-                        Text(isLogin ? "Swipe Up" : "Swipe Down")
+                    Button(action: {
+                        if self.pageState == .registration {
+                            self.pageState = .login
+                        }
+                        else {
+                            self.pageState = .registration
+                        }
+                    })
+                    {
+                        Text("Swipe Down")
                             .bold()
                             .font(.subheadline)
                     }
@@ -77,8 +98,8 @@ struct LoginPageView: View {
 }
 
 struct LoginPageView_Previews: PreviewProvider {
-    @State static private var test = true
+    @State static private var test = pageStatesEnum.login
     static var previews: some View {
-        LoginPageView(isLogin: $test)
+        LoginPageView(pageState: $test)
     }
 }

@@ -10,6 +10,8 @@ import SwiftUI
 
 struct TextFieldView: View {
     @Binding var string: String
+    
+    var passwordMode = false
     var header: String
     var placeholder: String
     var iconName: String
@@ -22,9 +24,24 @@ struct TextFieldView: View {
             HStack {
                 Image(systemName: iconName)
                     .foregroundColor(Color.init(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
-                TextField(placeholder, text: $string, onEditingChanged: { flag in
-                    
-                })
+                
+                if passwordMode {
+                    SecureField(placeholder, text: $string)
+                }
+                else {
+                    TextField(placeholder, text: $string, onEditingChanged: { flag in
+                        
+                    })
+                }
+                
+                if passwordMode {
+                    Button(action: {
+                        
+                    })
+                    {
+                        Image(systemName: "eye")
+                    }
+                }
             }
             Rectangle()
                 .frame(height: 1)
