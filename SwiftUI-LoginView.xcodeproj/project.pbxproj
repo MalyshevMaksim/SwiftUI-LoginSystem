@@ -72,6 +72,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B526833C244C8674001E2A3F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B5ABD3322448E1F500C6A4F0 /* Onboarding */,
+				B5ABD3332448E24B00C6A4F0 /* Login */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B526833D244C86B5001E2A3F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B526833E244C86FC001E2A3F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B5A683C32447BBB400892E03 /* PageControl.swift */,
+				B5A683BD2447504700892E03 /* PageViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		B5A6839D24474E8E00892E03 = {
 			isa = PBXGroup;
 			children = (
@@ -93,14 +118,13 @@
 		B5A683A824474E8E00892E03 /* SwiftUI-LoginView */ = {
 			isa = PBXGroup;
 			children = (
-				B5ABD3322448E1F500C6A4F0 /* Onboarding */,
-				B5ABD3332448E24B00C6A4F0 /* Login */,
+				B526833E244C86FC001E2A3F /* Controller */,
+				B526833D244C86B5001E2A3F /* Model */,
+				B526833C244C8674001E2A3F /* View */,
 				B5A683AB24474E8E00892E03 /* SceneDelegate.swift */,
 				B5A683A924474E8E00892E03 /* AppDelegate.swift */,
 				B5A683AD24474E8E00892E03 /* ContentView.swift */,
 				B526833A244BC84A001E2A3F /* FirebaseSession.swift */,
-				B5A683C32447BBB400892E03 /* PageControl.swift */,
-				B5A683BD2447504700892E03 /* PageViewController.swift */,
 				B5A683AF24474E9000892E03 /* Assets.xcassets */,
 				B5A683B424474E9000892E03 /* LaunchScreen.storyboard */,
 				B5F61EA0244BAA6400FEE0EB /* GoogleService-Info.plist */,
