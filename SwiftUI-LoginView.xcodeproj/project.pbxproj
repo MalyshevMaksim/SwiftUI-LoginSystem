@@ -16,8 +16,8 @@
 		B5A683B324474E9000892E03 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5A683B224474E9000892E03 /* Preview Assets.xcassets */; };
 		B5A683B624474E9000892E03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A683B424474E9000892E03 /* LaunchScreen.storyboard */; };
 		B5A683BE2447504700892E03 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A683BD2447504700892E03 /* PageViewController.swift */; };
-		B5A683C02447689000892E03 /* OnboardingElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A683BF2447689000892E03 /* OnboardingElementView.swift */; };
-		B5A683C22447725800892E03 /* OnboardingPagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A683C12447725800892E03 /* OnboardingPagesView.swift */; };
+		B5A683C02447689000892E03 /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A683BF2447689000892E03 /* OnboardingPageView.swift */; };
+		B5A683C22447725800892E03 /* OnboardingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A683C12447725800892E03 /* OnboardingListView.swift */; };
 		B5A683C42447BBB400892E03 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A683C32447BBB400892E03 /* PageControl.swift */; };
 		B5ABD32F244894C700C6A4F0 /* OnboardingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD32E244894C700C6A4F0 /* OnboardingDetailView.swift */; };
 		B5ABD3312448E12B00C6A4F0 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD3302448E12B00C6A4F0 /* OnboardingView.swift */; };
@@ -25,6 +25,8 @@
 		B5ABD3372448FD4900C6A4F0 /* LoginPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD3362448FD4900C6A4F0 /* LoginPageView.swift */; };
 		B5ABD345244A6A9300C6A4F0 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD344244A6A9300C6A4F0 /* TextFieldView.swift */; };
 		B5F61EA1244BAA6400FEE0EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5F61EA0244BAA6400FEE0EB /* GoogleService-Info.plist */; };
+		B5F8B951244C91CF00A453A6 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8B950244C91CF00A453A6 /* UserModel.swift */; };
+		B5F8B953244C926D00A453A6 /* OnboardingPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8B952244C926D00A453A6 /* OnboardingPageModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,8 +42,8 @@
 		B5A683B524474E9000892E03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5A683B724474E9000892E03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5A683BD2447504700892E03 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
-		B5A683BF2447689000892E03 /* OnboardingElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingElementView.swift; sourceTree = "<group>"; };
-		B5A683C12447725800892E03 /* OnboardingPagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPagesView.swift; sourceTree = "<group>"; };
+		B5A683BF2447689000892E03 /* OnboardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageView.swift; sourceTree = "<group>"; };
+		B5A683C12447725800892E03 /* OnboardingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingListView.swift; sourceTree = "<group>"; };
 		B5A683C32447BBB400892E03 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		B5ABD32E244894C700C6A4F0 /* OnboardingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDetailView.swift; sourceTree = "<group>"; };
 		B5ABD3302448E12B00C6A4F0 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		B5ABD3362448FD4900C6A4F0 /* LoginPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageView.swift; sourceTree = "<group>"; };
 		B5ABD344244A6A9300C6A4F0 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		B5F61EA0244BAA6400FEE0EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B5F8B950244C91CF00A453A6 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		B5F8B952244C926D00A453A6 /* OnboardingPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageModel.swift; sourceTree = "<group>"; };
 		E810B4110D991516F607CB7F /* Pods-SwiftUI-LoginView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUI-LoginView.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUI-LoginView/Pods-SwiftUI-LoginView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,29 +76,33 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B526833C244C8674001E2A3F /* View */ = {
+		B526833C244C8674001E2A3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B5A683AD24474E8E00892E03 /* ContentView.swift */,
 				B5ABD3322448E1F500C6A4F0 /* Onboarding */,
 				B5ABD3332448E24B00C6A4F0 /* Login */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		B526833D244C86B5001E2A3F /* Model */ = {
+		B526833D244C86B5001E2A3F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B526833A244BC84A001E2A3F /* FirebaseSession.swift */,
+				B5F8B950244C91CF00A453A6 /* UserModel.swift */,
+				B5F8B952244C926D00A453A6 /* OnboardingPageModel.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		B526833E244C86FC001E2A3F /* Controller */ = {
+		B526833E244C86FC001E2A3F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				B5A683C32447BBB400892E03 /* PageControl.swift */,
 				B5A683BD2447504700892E03 /* PageViewController.swift */,
 			);
-			path = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		B5A6839D24474E8E00892E03 = {
@@ -118,13 +126,11 @@
 		B5A683A824474E8E00892E03 /* SwiftUI-LoginView */ = {
 			isa = PBXGroup;
 			children = (
-				B526833E244C86FC001E2A3F /* Controller */,
-				B526833D244C86B5001E2A3F /* Model */,
-				B526833C244C8674001E2A3F /* View */,
+				B526833E244C86FC001E2A3F /* Controllers */,
+				B526833D244C86B5001E2A3F /* Models */,
+				B526833C244C8674001E2A3F /* Views */,
 				B5A683AB24474E8E00892E03 /* SceneDelegate.swift */,
 				B5A683A924474E8E00892E03 /* AppDelegate.swift */,
-				B5A683AD24474E8E00892E03 /* ContentView.swift */,
-				B526833A244BC84A001E2A3F /* FirebaseSession.swift */,
 				B5A683AF24474E9000892E03 /* Assets.xcassets */,
 				B5A683B424474E9000892E03 /* LaunchScreen.storyboard */,
 				B5F61EA0244BAA6400FEE0EB /* GoogleService-Info.plist */,
@@ -146,8 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				B5ABD3302448E12B00C6A4F0 /* OnboardingView.swift */,
-				B5A683C12447725800892E03 /* OnboardingPagesView.swift */,
-				B5A683BF2447689000892E03 /* OnboardingElementView.swift */,
+				B5A683C12447725800892E03 /* OnboardingListView.swift */,
+				B5A683BF2447689000892E03 /* OnboardingPageView.swift */,
 				B5ABD32E244894C700C6A4F0 /* OnboardingDetailView.swift */,
 			);
 			path = Onboarding;
@@ -288,16 +294,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5A683C02447689000892E03 /* OnboardingElementView.swift in Sources */,
+				B5A683C02447689000892E03 /* OnboardingPageView.swift in Sources */,
 				B5A683C42447BBB400892E03 /* PageControl.swift in Sources */,
 				B5A683AA24474E8E00892E03 /* AppDelegate.swift in Sources */,
 				B5A683AC24474E8E00892E03 /* SceneDelegate.swift in Sources */,
-				B5A683C22447725800892E03 /* OnboardingPagesView.swift in Sources */,
+				B5A683C22447725800892E03 /* OnboardingListView.swift in Sources */,
 				B5A683AE24474E8E00892E03 /* ContentView.swift in Sources */,
+				B5F8B951244C91CF00A453A6 /* UserModel.swift in Sources */,
 				B5ABD32F244894C700C6A4F0 /* OnboardingDetailView.swift in Sources */,
 				B5ABD3312448E12B00C6A4F0 /* OnboardingView.swift in Sources */,
 				B526833B244BC84A001E2A3F /* FirebaseSession.swift in Sources */,
 				B5ABD345244A6A9300C6A4F0 /* TextFieldView.swift in Sources */,
+				B5F8B953244C926D00A453A6 /* OnboardingPageModel.swift in Sources */,
 				B5ABD3372448FD4900C6A4F0 /* LoginPageView.swift in Sources */,
 				B5ABD3352448EF5600C6A4F0 /* LoginView.swift in Sources */,
 				B5A683BE2447504700892E03 /* PageViewController.swift in Sources */,
