@@ -24,77 +24,71 @@ struct LoginPageView: View {
     @State private var confirmPassword = ""
     
     var body: some View {
-        VStack {
-            VStack(alignment: .leading) {
-                Text("Login to account")
-                    .font(.system(size: 24))
-                    .bold()
-                    .padding(.bottom, 5)
-                    .animation(.none)
-                Text("Please enter your credentials")
-                    .foregroundColor(.secondary)
-                    .animation(.none)
-            }
-            .frame(minWidth: 0, maxWidth: .infinity, alignment: Alignment.topLeading)
-            .padding(.horizontal, 40)
-
-            Spacer()
-            
+        NavigationView {
             VStack {
-                TextFieldView(string: $email, header: "Email", placeholder: "Enter your email", iconName: "envelope.fill")
-                    .padding(.vertical)
-                    .padding(.horizontal, 40)
-                TextFieldView(string: $password, passwordMode: true, header: "Password", placeholder: "Enter your password", iconName: "lock.open.fill")
-                    .padding(.vertical)
-                    .padding(.horizontal, 40)
-            }
-            .padding(.bottom, 30)
-            Spacer()
-            
-            VStack {
-                Button(action: {
-                    self.userSession.login(email: self.email, password: self.password) { (result, error) in
-                        if error != nil {
-                            print("Error!")
-                        }
-                        else {
-                            print("Succesfull")
-                        }
-                    }
-                }) {
-                    Rectangle()
-                        .fill(buttonGradient)
-                        .frame(width: 300, height: 50, alignment: .center)
-                        .overlay(
-                            Text("Sign In")
-                                .foregroundColor(.white)
-                                .bold())
-                                .animation(.none)
-                        .cornerRadius(15)
-                }
-                .padding(.bottom, 10)
-                
-                HStack {
-                    Text("No account ?")
-                        .font(.subheadline)
+                VStack(alignment: .leading) {
+                    Text("Please enter your credentials")
                         .foregroundColor(.secondary)
+                }
+                .frame(minWidth: 0, maxWidth: .infinity, alignment: Alignment.topLeading)
+                .padding(.horizontal, 20)
+
+                Spacer()
+                
+                VStack {
+                    TextFieldView(string: $email, header: "Email", placeholder: "Enter your email", iconName: "envelope.fill")
+                        .padding(.vertical)
+                        .padding(.horizontal, 25)
+                    TextFieldView(string: $password, passwordMode: true, header: "Password", placeholder: "Enter your password", iconName: "lock.open.fill")
+                        .padding(.vertical)
+                        .padding(.horizontal, 25)
+                }
+                Spacer()
+                
+                VStack {
                     Button(action: {
-                        self.isPresenter = true
-                    })
-                    {
-                        Text("Sign Up")
-                            .bold()
-                            .font(.subheadline)
+                        self.userSession.login(email: self.email, password: self.password) { (result, error) in
+                            if error != nil {
+                                print("Error!")
+                            }
+                            else {
+                                print("Succesfull")
+                            }
+                        }
+                    }) {
+                        Rectangle()
+                            .fill(buttonGradient)
+                            .frame(width: 300, height: 50, alignment: .center)
+                            .overlay(
+                                Text("Sign In")
+                                    .foregroundColor(.white)
+                                    .bold())
+                            .cornerRadius(15)
                     }
-                .sheet(isPresented: self.$isPresenter) {
-                    RegistrationPageView()
+                    .padding(.bottom, 10)
+                    
+                    HStack {
+                        Text("No account ?")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                        Button(action: {
+                            self.isPresenter = true
+                        })
+                        {
+                            Text("Sign Up")
+                                .bold()
+                                .font(.subheadline)
+                        }
+                        .sheet(isPresented: self.$isPresenter) {
+                            RegistrationPageView(presentedBinding: self.$isPresenter)
+                        }
+                    }
                 }
-                }
-                .animation(.none)
+                .padding()
+                .padding(.bottom)
+                .padding(.bottom)
             }
-            .padding()
-            .padding(.bottom)
-            .padding(.bottom)
+            .navigationBarTitle("Login account")
         }
     }
 }

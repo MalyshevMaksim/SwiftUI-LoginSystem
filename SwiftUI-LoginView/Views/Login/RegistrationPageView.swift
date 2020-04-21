@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct RegistrationPageView: View {
+    @Binding var presentedBinding: Bool
+    
     @State private var email = ""
     @State private var password = ""
     @State private var confirmPassword = ""
@@ -19,7 +21,6 @@ struct RegistrationPageView: View {
                 VStack(alignment: .leading) {
                     Text("Please enter your credentials")
                         .foregroundColor(.secondary)
-                        .animation(.none)
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: Alignment.topLeading)
                 .padding(.horizontal, 20)
@@ -29,13 +30,13 @@ struct RegistrationPageView: View {
                 VStack {
                     TextFieldView(string: $email, header: "Email", placeholder: "Enter your email", iconName: "envelope.fill")
                         .padding(.vertical, 20)
-                        .padding(.horizontal, 40)
+                        .padding(.horizontal, 25)
                     TextFieldView(string: $password, passwordMode: true, header: "Password", placeholder: "Enter your password", iconName: "lock.open.fill")
                         .padding(.vertical, 20)
-                        .padding(.horizontal, 40)
+                        .padding(.horizontal, 25)
                     TextFieldView(string: $confirmPassword, passwordMode: true, header: "Confirm password", placeholder: "Confirm your password", iconName: "repeat")
                         .padding(.vertical, 20)
-                        .padding(.horizontal, 40)
+                        .padding(.horizontal, 25)
                 }
                 .padding(.bottom, 30)
                 Spacer()
@@ -56,14 +57,19 @@ struct RegistrationPageView: View {
                     }
                 }
             }
-            .navigationBarTitle("Sign Up")
-            .padding(.bottom, 50)
+            .navigationBarTitle("Create account")
+            .navigationBarItems(trailing: Button("Cancel") {
+                self.presentedBinding = false
+            })
         }
+        .padding(.bottom)
+        .padding(.bottom)
     }
 }
 
 struct RegistrationPageView_Previews: PreviewProvider {
+    @State static var previewPresented = false
     static var previews: some View {
-        RegistrationPageView()
+        RegistrationPageView(presentedBinding: $previewPresented)
     }
 }

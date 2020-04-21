@@ -36,11 +36,6 @@ struct LoginView: View {
                     ZStack {
                         Color.white
                         VStack {
-                            RoundedRectangle(cornerRadius: 100)
-                                .fill(Color.init(#colorLiteral(red: 0.7803921569, green: 0.7803921569, blue: 0.8, alpha: 1)))
-                                .frame(width: 60, height: 5, alignment: .center)
-                                .padding()
-                        
                                 LoginPageView()
                                     .animation(.spring())
                                     .transition(customTransition)
