@@ -8,9 +8,13 @@
 
 import SwiftUI
 
+var buttonGradient = LinearGradient(
+    gradient: Gradient(colors: [Color.init(#colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)), Color.init(#colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1))]),
+    startPoint: .topLeading,
+    endPoint: .bottomTrailing)
+
 struct LoginView: View {
     @State private var isPagePresented = false
-    @State private var pageState = pageStatesEnum.login
     
     var backgroundGradient = LinearGradient(
         gradient: Gradient(colors: [Color.init(#colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)), Color.init(#colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1))]),
@@ -24,18 +28,7 @@ struct LoginView: View {
     }
     
     var body: some View {
-        var gestureMenuHeight: CGFloat = 650
-        
-        switch pageState {
-            case .login:
-                gestureMenuHeight = CGFloat(530)
-            case .registration:
-                gestureMenuHeight = CGFloat(650)
-            case .forgotPassword:
-                gestureMenuHeight = CGFloat(410)
-        }
-        
-        return ZStack {
+        ZStack {
             backgroundGradient
             VStack {
                 Spacer()
@@ -48,12 +41,12 @@ struct LoginView: View {
                                 .frame(width: 60, height: 5, alignment: .center)
                                 .padding()
                         
-                                LoginPageView(pageState: $pageState)
+                                LoginPageView()
                                     .animation(.spring())
                                     .transition(customTransition)
                         }
                     }
-                    .frame(height: gestureMenuHeight)
+                    .frame(height: 570)
                     .cornerRadius(20)
                     .shadow(radius: 10)
                     .animation(Animation.spring())
