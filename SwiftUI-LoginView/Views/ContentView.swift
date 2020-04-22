@@ -7,19 +7,36 @@
 //
 
 import SwiftUI
+import Firebase
+
+var session = EmailAuthenticationCntroller()
 
 struct ContentView: View {
     @State private var isOnboarding = true
 
     var body: some View {
         return Group {
-            if isOnboarding {
-                OnboardingViewController(isGetStarted: $isOnboarding)
+            if Auth.auth().currentUser != nil {
+                Button(action: {
+                    session.logout()
+                })
+                {
+                    Text("Logout")
+                }
             }
             else {
-                LoginView()
+                if isOnboarding {
+                    OnboardingViewController(isGetStarted: $isOnboarding)
+                }
+                else {
+                    LoginView()
+                }
             }
         }
+    }
+    
+    init() {
+        session.listener()
     }
 }
 

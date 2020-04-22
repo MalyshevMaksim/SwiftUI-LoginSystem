@@ -14,6 +14,7 @@ struct RegistrationPageView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var confirmPassword = ""
+    @State var presentedBinding2 = false
     
     var body: some View {
         NavigationView {
@@ -42,18 +43,28 @@ struct RegistrationPageView: View {
                 Spacer()
                 
                 VStack {
-                    Button(action: {
-                        
-                    }) {
-                        Rectangle()
-                            .fill(buttonGradient)
-                            .frame(width: 300, height: 50, alignment: .center)
-                            .overlay(
-                                Text("Continue")
-                                    .foregroundColor(.white)
-                                    .bold())
-                                    .animation(.none)
-                            .cornerRadius(15)
+                    NavigationLink(destination: Text("123"), isActive: self.$presentedBinding2) {
+                        Button(action: {
+                            session.createAccount(email: self.email, password: self.password) { (result, error) in
+                                if error != nil {
+                                    self.presentedBinding2 = true
+                                    print("Error!")
+                                }
+                                else {
+                                    print("Successful!")
+                                }
+                            }
+                        }) {
+                            Rectangle()
+                                .fill(buttonGradient)
+                                .frame(width: 300, height: 50, alignment: .center)
+                                .overlay(
+                                    Text("Continue")
+                                        .foregroundColor(.white)
+                                        .bold())
+                                        .animation(.none)
+                                .cornerRadius(15)
+                        }
                     }
                 }
             }

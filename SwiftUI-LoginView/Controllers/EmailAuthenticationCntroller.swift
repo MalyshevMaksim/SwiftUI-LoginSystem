@@ -7,19 +7,33 @@
 //
 
 import Firebase
-import FirebaseAuth
-import FirebaseDatabase
 
 class EmailAuthenticationCntroller: ObservableObject {
-    
-    @Published var session: User?
+    @Published var session: UserModel?
     @Published var isLogin: Bool?
+    
+    func listener() {
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user != nil {
+                self.session = UserModel(id: user?.uid, email: user?.email, name: user?.displayName)
+                self.isLogin = true
+            }
+            else {
+                self.session = nil
+                self.isLogin = false
+            }
+        }
+    }
     
     func login(email: String, password: String, handler: @escaping AuthDataResultCallback) {
         Auth.auth().signIn(withEmail: email, password: password, completion: handler)
     }
     
     func createAccount(email: String, password: String, handler: @escaping AuthDataResultCallback) {
-        
+        Auth.auth().createUser(withEmail: email, password: password, completion: handler)
+    }
+    
+    func logout() {
+        try! Auth.auth().signOut()
     }
 }

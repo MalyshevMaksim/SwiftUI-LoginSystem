@@ -15,8 +15,6 @@ enum pageStatesEnum {
 }
 
 struct LoginPageView: View {
-    @ObservedObject private var userSession = EmailAuthenticationCntroller()
-    
     @State private var isPresenter = false
     
     @State private var email = ""
@@ -47,7 +45,7 @@ struct LoginPageView: View {
                 
                 VStack {
                     Button(action: {
-                        self.userSession.login(email: self.email, password: self.password) { (result, error) in
+                        session.login(email: self.email, password: self.password) { (result, error) in
                             if error != nil {
                                 print("Error!")
                             }

@@ -41,7 +41,7 @@ struct LoginView: View {
                                     .transition(customTransition)
                         }
                     }
-                    .frame(height: 570)
+                    .frame(height: 550)
                     .cornerRadius(20)
                     .shadow(radius: 10)
                     .animation(Animation.spring())
