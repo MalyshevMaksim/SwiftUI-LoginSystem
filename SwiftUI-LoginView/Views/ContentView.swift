@@ -9,16 +9,22 @@
 import SwiftUI
 import Firebase
 
-var session = EmailAuthenticationCntroller()
-
 struct ContentView: View {
     @State private var isOnboarding = true
-
+    @State private var isHOME = false
+    @State private var test = false
+    @ObservedObject var session = EmailAuthenticationCntroller()
+    
+    var titleTransition: AnyTransition {
+        let transition = AnyTransition.move(edge: .bottom)
+        return transition
+    }
+    
     var body: some View {
-        return Group {
-            if Auth.auth().currentUser != nil {
+        ZStack {
+            if session.isLogin {
                 Button(action: {
-                    session.logout()
+                    self.session.logout()
                 })
                 {
                     Text("Logout")
@@ -32,6 +38,9 @@ struct ContentView: View {
                     LoginView()
                 }
             }
+        }
+        .onAppear {
+            self.isHOME = true
         }
     }
     

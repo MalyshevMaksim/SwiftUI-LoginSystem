@@ -11,11 +11,6 @@ import SwiftUI
 struct OnboardingViewController: View {
     @Binding var isGetStarted: Bool
     
-    var buttonGradient = LinearGradient(gradient: Gradient(
-        colors: [Color.init(#colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)), Color.init(#colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1))]),
-        startPoint: .topLeading,
-        endPoint: .bottomTrailing)
-    
     var titleTransition: AnyTransition {
         let transition = AnyTransition.move(edge: .bottom)
             .combined(with: .opacity)
@@ -38,11 +33,14 @@ struct OnboardingViewController: View {
             Spacer()
             Button(action: { self.isGetStarted = false }) {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 25)
-                        .fill(buttonGradient)
-                    Text("Get Started")
+                    Rectangle()
+                    .fill(Color.init(#colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)))
+                    .frame(width: 300, height: 50, alignment: .center)
+                    .overlay(
+                        Text("Get Started")
                         .foregroundColor(.white)
-                        .bold()
+                        .bold())
+                    .cornerRadius(8)
                 }
                 .frame(width: 250, height: 50, alignment: .center)
             }

@@ -6,8 +6,6 @@
 //  Copyright © 2020 Максим. All rights reserved.
 //
 
-import SwiftUI
-
 class UserModel {
     var id: String?
     var email: String?

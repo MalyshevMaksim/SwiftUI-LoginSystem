@@ -7,10 +7,11 @@
 //
 
 import Firebase
+import SwiftUI
 
 class EmailAuthenticationCntroller: ObservableObject {
     @Published var session: UserModel?
-    @Published var isLogin: Bool?
+    @Published var isLogin: Bool = false
     
     func listener() {
         Auth.auth().addStateDidChangeListener { (auth, user) in
