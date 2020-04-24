@@ -25,6 +25,7 @@
 		B5ABD3352448EF5600C6A4F0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD3342448EF5600C6A4F0 /* LoginView.swift */; };
 		B5ABD3372448FD4900C6A4F0 /* LoginPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD3362448FD4900C6A4F0 /* LoginPageView.swift */; };
 		B5ABD345244A6A9300C6A4F0 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD344244A6A9300C6A4F0 /* TextFieldView.swift */; };
+		B5BAD36F2452C70500FF45C7 /* MainPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BAD36E2452C70500FF45C7 /* MainPageView.swift */; };
 		B5F61EA1244BAA6400FEE0EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5F61EA0244BAA6400FEE0EB /* GoogleService-Info.plist */; };
 		B5F69382244F7C8600A4CCD5 /* RegistrationPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F69381244F7C8600A4CCD5 /* RegistrationPageView.swift */; };
 		B5F8B951244C91CF00A453A6 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8B950244C91CF00A453A6 /* UserModel.swift */; };
@@ -53,6 +54,7 @@
 		B5ABD3342448EF5600C6A4F0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B5ABD3362448FD4900C6A4F0 /* LoginPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageView.swift; sourceTree = "<group>"; };
 		B5ABD344244A6A9300C6A4F0 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		B5BAD36E2452C70500FF45C7 /* MainPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageView.swift; sourceTree = "<group>"; };
 		B5F61EA0244BAA6400FEE0EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B5F69381244F7C8600A4CCD5 /* RegistrationPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPageView.swift; sourceTree = "<group>"; };
 		B5F8B950244C91CF00A453A6 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				B5A683AD24474E8E00892E03 /* ContentView.swift */,
+				B5BAD36E2452C70500FF45C7 /* MainPageView.swift */,
 				B5ABD3322448E1F500C6A4F0 /* Onboarding */,
 				B5ABD3332448E24B00C6A4F0 /* Login */,
 			);
@@ -308,6 +311,7 @@
 				B5A683AE24474E8E00892E03 /* ContentView.swift in Sources */,
 				B5F8B951244C91CF00A453A6 /* UserModel.swift in Sources */,
 				B5F69382244F7C8600A4CCD5 /* RegistrationPageView.swift in Sources */,
+				B5BAD36F2452C70500FF45C7 /* MainPageView.swift in Sources */,
 				B5ABD32F244894C700C6A4F0 /* OnboardingDetailView.swift in Sources */,
 				B5ABD3312448E12B00C6A4F0 /* OnboardingView.swift in Sources */,
 				B526833B244BC84A001E2A3F /* EmailAuthenticationCntroller.swift in Sources */,

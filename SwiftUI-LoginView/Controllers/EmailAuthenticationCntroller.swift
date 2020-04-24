@@ -10,17 +10,17 @@ import Firebase
 import SwiftUI
 
 class EmailAuthenticationCntroller: ObservableObject {
-    @Published var session: UserModel?
+    @Published var user: UserModel?
     @Published var isLogin: Bool = false
     
     func listener() {
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
-                self.session = UserModel(id: user?.uid, email: user?.email, name: user?.displayName)
+                self.user = UserModel(id: user?.uid, email: user?.email, name: user?.displayName)
                 self.isLogin = true
             }
             else {
-                self.session = nil
+                self.user = nil
                 self.isLogin = false
             }
         }

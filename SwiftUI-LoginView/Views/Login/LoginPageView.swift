@@ -7,23 +7,41 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct LoginPageView: View {
     @ObservedObject var session = EmailAuthenticationCntroller()
     @State private var isPresenter = false
+    @State private var xOffset: CGFloat = 0
+    
+    @State private var errorMesssage: String?
+    @State private var showingAlert = false
     
     @State private var email = ""
     @State private var password = ""
     
+    func login() {
+         Auth.auth().signIn(withEmail: self.email, password: self.password) { user, error in
+            if error != nil {
+                self.errorMesssage = error?.localizedDescription
+                self.showingAlert = true
+            }
+         }
+     }
+    
     var body: some View {
         NavigationView {
             VStack {
+                Image("asset1")
+                    .resizable()
+                    .frame(width: 330, height: 230, alignment: .center)
+                    .scaledToFill()
                 VStack {
                     TextFieldView(string: $email, header: "Email", placeholder: "Enter your email", iconName: "envelope.fill")
-                        .padding(.vertical, 10)
+                        .padding(.vertical, 8)
                         .padding(.horizontal, 25)
                     TextFieldView(string: $password, passwordMode: true, header: "Password", placeholder: "Enter your password", iconName: "lock.open.fill")
-                        .padding(.vertical, 10)
+                        .padding(.vertical, 8)
                         .padding(.horizontal, 25)
                 }
                     
@@ -31,25 +49,19 @@ struct LoginPageView: View {
                     NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { (noti) in
                         
                         let change = noti.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+                        self.xOffset += change.height / 4
                     }
                     
                     NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { (noti) in
+                        self.xOffset = 0
                     }
                 }
                 
                 VStack(alignment: .trailing) {
-                    Button(action: {
-                        self.session.login(email: self.email, password: self.password) { (result, error) in
-                            if error != nil {
-                                print("Error!")
-                            }
-                            else {
-                                print("Succesfull")
-                            }
-                        }
-                    }) {
+                    Button(action: { self.login() })
+                    {
                         Rectangle()
-                            .fill(Color.init(#colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)))
+                            .fill(Color.init(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
                             .frame(width: 320, height: 50, alignment: .center)
                             .overlay(
                                 Text("Sign In")
@@ -57,11 +69,14 @@ struct LoginPageView: View {
                                     .bold())
                             .cornerRadius(8)
                     }
-                    .padding(.bottom, 10)
+                    .alert(isPresented: $showingAlert) {
+                        Alert(title: Text("Error"), message: Text(self.errorMesssage!), dismissButton: .destructive(Text("OK")))
+                    }
+                    .padding(.bottom, 3)
                     
                     HStack {
                         Text("No account ?")
-                            .font(.subheadline)
+                            .font(.footnote)
                             .foregroundColor(.secondary)
                         Button(action: {
                             self.isPresenter = true
@@ -70,13 +85,14 @@ struct LoginPageView: View {
                             Text("Sign Up")
                             .foregroundColor(Color.init(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
                                 .bold()
-                                .font(.subheadline)
+                                .font(.footnote)
                         }
                         .sheet(isPresented: self.$isPresenter) {
                             RegistrationPageView(presentedBinding: self.$isPresenter)
                         }
                     }
                 }
+                .padding(.vertical, 25)
                     
                 Spacer()
                 FooterView()
@@ -87,7 +103,6 @@ struct LoginPageView: View {
         }
     }
 }
-
 struct LoginPageView_Previews: PreviewProvider {
     static var previews: some View {
         LoginPageView()

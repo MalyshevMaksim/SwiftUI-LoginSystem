@@ -11,7 +11,6 @@ import Firebase
 
 struct ContentView: View {
     @State private var isOnboarding = true
-    @State private var isHOME = false
     @State private var test = false
     @ObservedObject var session = EmailAuthenticationCntroller()
     
@@ -23,12 +22,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             if session.isLogin {
-                Button(action: {
-                    self.session.logout()
-                })
-                {
-                    Text("Logout")
-                }
+                MainPageView()
             }
             else {
                 if isOnboarding {
@@ -40,12 +34,8 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            self.isHOME = true
+            self.session.listener()
         }
-    }
-    
-    init() {
-        session.listener()
     }
 }
 

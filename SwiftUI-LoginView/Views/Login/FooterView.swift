@@ -35,11 +35,11 @@ struct FooterView: View {
                                 .scaledToFit()
                                 .frame(width: 22, height: 22, alignment: .center)
                             Text("Google")
-                                .font(.footnote)
+                                .font(.caption)
                                 .bold()
                         }
                     }
-                    .frame(width:150, height: 40, alignment: .center)
+                    .frame(width:140, height: 40, alignment: .center)
                 }
                 .padding(.horizontal, 5)
                 .buttonStyle(PlainButtonStyle())
@@ -54,11 +54,11 @@ struct FooterView: View {
                                 .scaledToFit()
                                 .frame(width: 22, height: 22, alignment: .center)
                             Text("Apple")
-                                .font(.footnote)
+                                .font(.caption)
                                 .bold()
                         }
                     }
-                    .frame(width: 150, height: 40, alignment: .center)
+                    .frame(width: 140, height: 40, alignment: .center)
                     
                 }
                 .padding(.horizontal, 5)
