@@ -9,9 +9,9 @@
 import SwiftUI
 
 var artists = [
-    OnboardingPageModel(imageName: "Billie", headerText: "Billie Elish", description: "Американская певица и автор песен. Снискала известность в 2016 году благодаря публикации дебютного сингла «Ocean Eyes» на SoundCloud."),
-    OnboardingPageModel(imageName: "Eminem", headerText: "Billie Elish", description: "Американская певица и автор песен. Снискала известность в 2016 году благодаря публикации дебютного сингла «Ocean Eyes» на SoundCloud."),
-    OnboardingPageModel(imageName: "OneRepublic", headerText: "Billie Elish", description: "Американская певица и автор песен. Снискала известность в 2016 году благодаря публикации дебютного сингла «Ocean Eyes» на SoundCloud.")
+    OnboardingPageModel(imageName: "password", headerText: "Password", description: "You can use Firebase Authentication to let your users authenticate with Firebase using their email addresses and passwords, and to manage your app's password-based accounts."),
+    OnboardingPageModel(imageName: "google", headerText: "Google Sign-In", description: "You can let your users authenticate with Firebase using their Google Accounts by integrating Google Sign-In into your app."),
+    OnboardingPageModel(imageName: "apple", headerText: "Sign in with Apple", description: "You can let your users authenticate with Firebase using their Apple ID by using the Firebase SDK to carry out the end-to-end OAuth 2.0 sign-in flow.")
 ]
 
 struct OnboardingListView<Page: View>: View {
@@ -21,11 +21,11 @@ struct OnboardingListView<Page: View>: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             Color.init(#colorLiteral(red: 0.937254902, green: 0.937254902, blue: 0.9568627451, alpha: 1))
-            PageViewController(viewControllers: viewControllers, currentPage: $currentPage)
-            PageControl(numberOfPage: viewControllers.count, currentPage: $currentPage)
+            PageViewController(viewControllers: self.viewControllers, currentPage: self.$currentPage)
+            PageControl(numberOfPage: self.viewControllers.count, currentPage: self.$currentPage)
                 .padding(10)
         }
-        .frame(width: 320, height: 450, alignment: .center)
+
         .cornerRadius(25)
         .shadow(color: Color.init(#colorLiteral(red: 0.8736248016, green: 0.8737716079, blue: 0.8736054301, alpha: 1)), radius: 20, x: 0, y: 0)
     }

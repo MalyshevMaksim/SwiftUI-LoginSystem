@@ -24,10 +24,8 @@ struct OnboardingPageView: View {
         VStack {
             Image(pageData.imageName)
                 .resizable()
-                .frame(width: 120, height: 120, alignment: .center)
-                .aspectRatio(contentMode: .fit)
-                .clipShape(Circle())
-                .shadow(radius: 10)
+                .frame(width: 100, height: 100, alignment: .center)
+                .scaledToFit()
                 .padding()
             
             if isPagePresented {
@@ -45,19 +43,19 @@ struct OnboardingPageView: View {
                     .font(.footnote)
                     .multilineTextAlignment(.center)
                     .padding(10)
+                    .padding(.horizontal)
                     .animation(Animation.spring().delay(0.2))
                     .transition(pageTransition)
             }
             
             Button(action: { self.isDetailPresented = true }) {
                 Text("Show more info")
-                    .bold()
-                    .font(.headline)
+                    
             }
             .sheet(isPresented: $isDetailPresented, content: {
                 OnboardingDetailView()
             })
-            .padding(10)
+            .padding()
         }
         .onAppear {
             self.isPagePresented = true
@@ -72,6 +70,6 @@ struct OnboardingPageView: View {
 
 struct OnboardingPageView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingPageView(pageData: OnboardingPageModel(imageName: "Billie", headerText: "Billie Elish", description: "Американская певица и автор песен. Снискала известность в 2016 году благодаря публикации дебютного сингла «Ocean Eyes» на SoundCloud."))
+        OnboardingPageView(pageData: OnboardingPageModel(imageName: "password", headerText: "Billie Elish", description: "Американская певица и автор песен. Снискала известность в 2016 году благодаря публикации дебютного сингла «Ocean Eyes» на SoundCloud."))
     }
 }

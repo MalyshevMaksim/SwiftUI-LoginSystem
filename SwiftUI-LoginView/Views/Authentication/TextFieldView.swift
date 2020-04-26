@@ -46,6 +46,7 @@ struct TextFieldView: View {
                 }
             }
         }
+            
         .background(
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.init(#colorLiteral(red: 0.9568627451, green: 0.9647058824, blue: 0.9764705882, alpha: 1))))

@@ -9,9 +9,8 @@
 import SwiftUI
 
 struct MainPageView: View {
-    @ObservedObject var session = EmailAuthenticationCntroller()
+    @ObservedObject var session: EmailAuthenticationCntroller
     @State private var isPagePresented = false
-    @State var user: UserModel?
     
     var customTransition: AnyTransition {
         let transition = AnyTransition.move(edge: .bottom)
@@ -23,7 +22,6 @@ struct MainPageView: View {
             if isPagePresented {
                 VStack {
                     Spacer()
-                    
                     VStack {
                         Image("Billie")
                             .resizable()
@@ -32,8 +30,13 @@ struct MainPageView: View {
                             .clipShape(Circle())
                             .shadow(radius: 10)
                             .padding()
-                        Text(user?.email ?? "123")
-                            .font(.headline)
+                        VStack {
+                            Text("Email:")
+                                .bold()
+                                .font(.callout)
+                            Text(session.user?.email ?? "")
+                                .font(.callout)
+                        }
                     }
                     
                     Spacer()
@@ -62,8 +65,8 @@ struct MainPageView: View {
     }
 }
 
-struct MainPageView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainPageView()
-    }
-}
+//struct MainPageView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MainPageView()
+//    }
+//}

@@ -18,33 +18,37 @@ struct OnboardingViewController: View {
     }
 
     var body: some View {
-        VStack {
-            Spacer()
-            
-            Text("Welcome to App!")
-                .font(.title)
-                .bold()
-                .padding()
-                .animation(Animation.spring().delay(0.3))
-                .transition(titleTransition)
-            
-            OnboardingListView(artists.map { OnboardingPageView(pageData: $0) })
-            Spacer()
-            Spacer()
-            Button(action: { self.isGetStarted = false }) {
-                ZStack {
-                    Rectangle()
-                    .fill(Color.init(#colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)))
-                    .frame(width: 300, height: 50, alignment: .center)
-                    .overlay(
-                        Text("Get Started")
-                        .foregroundColor(.white)
-                        .bold())
-                    .cornerRadius(8)
+        GeometryReader { geometry in
+            VStack(alignment: .leading) {
+                Spacer()
+                Text("Welcome to App!")
+                    .font(.title)
+                    .bold()
+                    .padding()
+                    .animation(Animation.spring().delay(0.3))
+                    .transition(self.titleTransition)
+                    .frame(width: geometry.size.width * 0.85)
+                Spacer()
+                
+                OnboardingListView(artists.map { OnboardingPageView(pageData: $0) })
+                    .frame(width: geometry.size.width * 0.85, height: geometry.size.height * 0.65)
+                Spacer()
+                Spacer()
+                
+                Button(action: { self.isGetStarted = false }) {
+                    ZStack {
+                        Rectangle()
+                        .fill(Color.init(#colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)))
+                        .overlay(
+                            Text("Get Started")
+                            .foregroundColor(.white)
+                            .bold())
+                        .cornerRadius(8)
+                    }
+                    .frame(width: geometry.size.width * 0.85, height: geometry.size.height * 0.07, alignment: .center)
                 }
-                .frame(width: 250, height: 50, alignment: .center)
+                Spacer()
             }
-            Spacer()
         }
     }
 }

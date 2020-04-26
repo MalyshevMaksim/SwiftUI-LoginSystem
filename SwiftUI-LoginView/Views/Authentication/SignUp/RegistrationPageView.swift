@@ -11,12 +11,34 @@ import Firebase
 
 struct RegistrationPageView: View {
     @Binding var presentedBinding: Bool
-    @EnvironmentObject var session: EmailAuthenticationCntroller
+    @ObservedObject var session: EmailAuthenticationCntroller
     @State private var xOffset: CGFloat = 0
     
     @State private var email = ""
     @State private var password = ""
     @State private var confirmPassword = ""
+    
+    @State private var errorMessage: String?
+    @State private var showingAlert = false
+    
+    func registration() {
+        if password != confirmPassword {
+            self.errorMessage = "Password mismatch!"
+            self.showingAlert = true
+            return
+        }
+        session.createAccount(email: email, password: password) { user, error in
+            if error != nil {
+                self.errorMessage = error?.localizedDescription
+                self.showingAlert = true
+                return
+            }
+            
+            Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
+                
+            })
+        }
+    }
     
     var body: some View {
         NavigationView {
@@ -39,7 +61,6 @@ struct RegistrationPageView: View {
                 }
                 .onAppear {
                     NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { (noti) in
-                        
                         let change = noti.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
                         self.xOffset += change.height / 2
                     }
@@ -52,16 +73,7 @@ struct RegistrationPageView: View {
                 Spacer()
                 
                 VStack {
-                    Button(action: {
-                        self.session.createAccount(email: self.email, password: self.password) { (result, error) in
-                            if error != nil {
-                                print("Error!")
-                            }
-                            else {
-                               //  var dbReference = Database.database().reference()
-                            }
-                        }
-                    }) {
+                    Button(action: { self.registration() }) {
                         Rectangle()
                             .fill(Color.init(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
                             .frame(width: 320, height: 50, alignment: .center)
@@ -70,6 +82,9 @@ struct RegistrationPageView: View {
                                 .foregroundColor(.white)
                                 .bold())
                             .cornerRadius(8)
+                    }
+                    .alert(isPresented: $showingAlert) {
+                        Alert(title: Text("Error!"), message: Text(self.errorMessage!), dismissButton: .destructive(Text("OK")))
                     }
                 }
             }
@@ -84,9 +99,9 @@ struct RegistrationPageView: View {
     }
 }
 
-struct RegistrationPageView_Previews: PreviewProvider {
-    @State static var previewPresented = false
-    static var previews: some View {
-        RegistrationPageView(presentedBinding: $previewPresented)
-    }
-}
+//struct RegistrationPageView_Previews: PreviewProvider {
+//    @State static var previewPresented = false
+//    static var previews: some View {
+//        RegistrationPageView(presentedBinding: $previewPresented)
+//    }
+//}

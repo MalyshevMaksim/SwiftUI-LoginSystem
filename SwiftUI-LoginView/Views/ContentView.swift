@@ -22,7 +22,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             if session.isLogin {
-                MainPageView()
+                MainPageView(session: self.session)
             }
             else {
                 if isOnboarding {
