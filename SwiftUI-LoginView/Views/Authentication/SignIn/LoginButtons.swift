@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct LoginButtons: View {
     @ObservedObject var session: EmailAuthenticationCntroller
@@ -16,13 +17,23 @@ struct LoginButtons: View {
     
     @State private var errorMesssage: String?
     @State private var showingAlert = false
+    @State private var showingSignUpPage = false
     
     func login() {
        session.login(email: bindEmail, password: bindPassword) { user, error in
-           if error != nil {
-               self.errorMesssage = error?.localizedDescription
-               self.showingAlert = true
-           }
+            if error != nil {
+                self.errorMesssage = error?.localizedDescription
+                self.showingAlert = true
+                return
+            }
+        
+            if !Auth.auth().currentUser!.isEmailVerified {
+                self.errorMesssage = "Your account has been created but not verified. Confirm registration by your email."
+                self.showingAlert = true
+                return
+            }
+            
+            self.session.isLogin = true
         }
     }
     
@@ -43,8 +54,11 @@ struct LoginButtons: View {
                     .foregroundColor(.secondary)
                 
                 TextButton(text: "Sign Up", action: {
-                    
+                    self.showingSignUpPage = true
                 })
+                .sheet(isPresented: self.$showingSignUpPage) {
+                    RegistrationPageView(presentedBinding: self.$showingSignUpPage, session: self.session)
+                }
             }
         }
     }

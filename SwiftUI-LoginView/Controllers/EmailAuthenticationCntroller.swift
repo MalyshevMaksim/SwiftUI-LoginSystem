@@ -10,24 +10,24 @@ import Firebase
 import SwiftUI
 
 class EmailAuthenticationCntroller: ObservableObject {
-    @Published var user: UserModel?
-    @Published var isLogin: Bool = false
+    //@Published var user: UserModel?
+    @Published var isLogin: Bool?
+    @Published var session: User?
     
-    func listener() {
-        Auth.auth().addStateDidChangeListener { (auth, user) in
-            if user != nil {
-                self.user = UserModel(id: user?.uid, email: user?.email, name: user?.displayName)
-                self.isLogin = true
-            }
-            else {
-                self.user = nil
-                self.isLogin = false
-            }
+    func initTest() {
+        session = Auth.auth().currentUser
+        if session != nil && session!.isEmailVerified {
+            self.isLogin = true
+            print("OK!")
+        }
+        else {
+            print("Dont!")
+            self.isLogin = false
         }
     }
     
     func login(email: String, password: String, handler: @escaping AuthDataResultCallback) {
-        Auth.auth().signIn(withEmail: email, password: password, completion: handler)
+        Auth.auth().signIn(withEmail: email, password: password, completion: handler) 
     }
     
     func createAccount(email: String, password: String, handler: @escaping AuthDataResultCallback) {
@@ -36,5 +36,6 @@ class EmailAuthenticationCntroller: ObservableObject {
     
     func logout() {
         try! Auth.auth().signOut()
+        self.isLogin = false
     }
 }

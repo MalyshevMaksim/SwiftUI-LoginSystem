@@ -34,7 +34,7 @@ struct MainPageView: View {
                             Text("Email:")
                                 .bold()
                                 .font(.callout)
-                            Text(session.user?.email ?? "")
+                            Text("session.user?.email ?? ")
                                 .font(.callout)
                         }
                     }

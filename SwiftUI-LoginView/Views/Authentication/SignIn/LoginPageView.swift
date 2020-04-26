@@ -44,7 +44,7 @@ struct LoginPageView: View {
     var body: some View {
         VStack(alignment: .leading) {
             VStack(alignment: .leading) {
-                Text("Login account")
+                Text("Login to account")
                     .bold()
                     .font(.largeTitle)
                     .padding(.horizontal, 30)
@@ -53,15 +53,19 @@ struct LoginPageView: View {
                     .foregroundColor(.secondary)
                     .padding(.horizontal, 30)
             }
-            .padding(.vertical)
-            
+            .padding(.top)
+                    
             Spacer()
             
-            VStack(alignment: .trailing) {
+            VStack(alignment: .center) {
+                Image("asset1")
+                .resizable()
+                .scaledToFit()
+                
                 LoginTextFields(bindEmail: $email,
                     bindPassword: $password,
                     bindOffset: $offset)
-                .padding(.vertical)
+                .padding(.bottom)
                 
                 LoginButtons(session: session,
                     bindEmail: $email,

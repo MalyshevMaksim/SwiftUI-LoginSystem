@@ -45,20 +45,19 @@ struct RegistrationPageView: View {
             VStack {
                 Image("asset2")
                     .resizable()
-                    .frame(width: 330, height: 230, alignment: .center)
-                    .padding()
+                    .scaledToFit()
                 
                 VStack {
                     TextFieldView(string: $email, header: "Email", placeholder: "Enter your email", iconName: "envelope.fill")
                         .padding(.vertical, 8)
-                        .padding(.horizontal, 25)
                     TextFieldView(string: $password, passwordMode: true, header: "Password", placeholder: "Enter your password", iconName: "lock.open.fill")
                         .padding(.vertical, 8)
-                        .padding(.horizontal, 25)
                     TextFieldView(string: $confirmPassword, passwordMode: true, header: "Confirm password", placeholder: "Confirm your password", iconName: "repeat")
                         .padding(.vertical, 8)
-                        .padding(.horizontal, 25)
                 }
+                .padding(.horizontal, 30)
+                .padding(.vertical)
+                    
                 .onAppear {
                     NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { (noti) in
                         let change = noti.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
@@ -76,7 +75,7 @@ struct RegistrationPageView: View {
                     Button(action: { self.registration() }) {
                         Rectangle()
                             .fill(Color.init(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
-                            .frame(width: 320, height: 50, alignment: .center)
+                            .frame(height: 50, alignment: .center)
                             .overlay(
                                 Text("Continue")
                                 .foregroundColor(.white)
@@ -87,6 +86,7 @@ struct RegistrationPageView: View {
                         Alert(title: Text("Error!"), message: Text(self.errorMessage!), dismissButton: .destructive(Text("OK")))
                     }
                 }
+                .padding(.horizontal, 30)
             }
             .navigationBarTitle("Create account")
             .navigationBarItems(trailing: Button("Cancel") {
@@ -99,9 +99,10 @@ struct RegistrationPageView: View {
     }
 }
 
-//struct RegistrationPageView_Previews: PreviewProvider {
-//    @State static var previewPresented = false
-//    static var previews: some View {
-//        RegistrationPageView(presentedBinding: $previewPresented)
-//    }
-//}
+struct RegistrationPageView_Previews: PreviewProvider {
+    @State static var previewPresented = false
+    @ObservedObject static var session = EmailAuthenticationCntroller()
+    static var previews: some View {
+        RegistrationPageView(presentedBinding: $previewPresented, session: self.session)
+    }
+}

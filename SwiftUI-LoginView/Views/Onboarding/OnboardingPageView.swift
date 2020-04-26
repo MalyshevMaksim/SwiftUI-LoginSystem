@@ -24,8 +24,8 @@ struct OnboardingPageView: View {
         VStack {
             Image(pageData.imageName)
                 .resizable()
-                .frame(width: 100, height: 100, alignment: .center)
                 .scaledToFit()
+                .frame(width: 90, height: 90, alignment: .center)
                 .padding()
             
             if isPagePresented {

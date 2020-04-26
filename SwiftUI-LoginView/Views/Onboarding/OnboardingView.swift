@@ -21,13 +21,13 @@ struct OnboardingViewController: View {
         GeometryReader { geometry in
             VStack(alignment: .leading) {
                 Spacer()
-                Text("Welcome to App!")
+                Text("Auth application")
                     .font(.title)
                     .bold()
                     .padding()
                     .animation(Animation.spring().delay(0.3))
                     .transition(self.titleTransition)
-                    .frame(width: geometry.size.width * 0.85)
+                    
                 Spacer()
                 
                 OnboardingListView(artists.map { OnboardingPageView(pageData: $0) })

@@ -11,7 +11,6 @@ import Firebase
 
 struct ContentView: View {
     @State private var isOnboarding = true
-    @State private var test = false
     @ObservedObject var session = EmailAuthenticationCntroller()
     
     var titleTransition: AnyTransition {
@@ -21,7 +20,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            if session.isLogin {
+            if session.isLogin ?? false {
                 MainPageView(session: self.session)
             }
             else {
@@ -34,7 +33,7 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            self.session.listener()
+            self.session.initTest()
         }
     }
 }
