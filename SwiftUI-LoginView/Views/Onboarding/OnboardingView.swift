@@ -35,18 +35,10 @@ struct OnboardingViewController: View {
                 Spacer()
                 Spacer()
                 
-                Button(action: { self.isGetStarted = false }) {
-                    ZStack {
-                        Rectangle()
-                        .fill(Color.init(#colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)))
-                        .overlay(
-                            Text("Get Started")
-                            .foregroundColor(.white)
-                            .bold())
-                        .cornerRadius(8)
-                    }
-                    .frame(width: geometry.size.width * 0.85, height: geometry.size.height * 0.07, alignment: .center)
-                }
+                FillButton(text: "Get Started", action: {
+                    self.isGetStarted = false
+                })
+                .frame(width: geometry.size.width * 0.85, height: geometry.size.height * 0.07, alignment: .center)
                 Spacer()
             }
         }

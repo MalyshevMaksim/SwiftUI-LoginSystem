@@ -59,13 +59,14 @@ struct LoginPageView: View {
             
             VStack(alignment: .center) {
                 Image("asset1")
-                .resizable()
-                .scaledToFit()
+                    .resizable()
+                    .scaledToFit()
+                    .padding()
                 
                 LoginTextFields(bindEmail: $email,
                     bindPassword: $password,
                     bindOffset: $offset)
-                .padding(.bottom)
+                    .padding(.bottom)
                 
                 LoginButtons(session: session,
                     bindEmail: $email,
@@ -75,8 +76,8 @@ struct LoginPageView: View {
             .padding(.horizontal, 30)
             
             FooterView()
-            .padding(.horizontal, 20)
-            .padding(.bottom)
+                .padding(.horizontal, 20)
+                .padding(.bottom)
         }
     }
 }

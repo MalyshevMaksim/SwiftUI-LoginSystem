@@ -13,6 +13,8 @@ struct LoginTextFields: View {
     @Binding var bindPassword: String
     @Binding var bindOffset: CGFloat
     
+    @State private var isShowingResetPage = false
+    
     var body: some View {
          VStack {
             TextFieldView(string: self.$bindEmail,
@@ -29,8 +31,11 @@ struct LoginTextFields: View {
                     iconName: "lock.open.fill")
                     
                 TextButton(text: "Forgot your password?", action: {
-                        
+                    self.isShowingResetPage = true
                 })
+                .sheet(isPresented: $isShowingResetPage) {
+                    ResetPasswordView()
+                }
             }
             .padding(.vertical, 8)
         }

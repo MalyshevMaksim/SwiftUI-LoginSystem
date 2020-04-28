@@ -48,11 +48,22 @@ struct RegistrationPageView: View {
                     .scaledToFit()
                 
                 VStack {
-                    TextFieldView(string: $email, header: "Email", placeholder: "Enter your email", iconName: "envelope.fill")
+                    TextFieldView(string: $email,
+                                  header: "Email",
+                                  placeholder: "Enter your email",
+                                  iconName: "envelope.fill")
                         .padding(.vertical, 8)
-                    TextFieldView(string: $password, passwordMode: true, header: "Password", placeholder: "Enter your password", iconName: "lock.open.fill")
+                    
+                    TextFieldView(string: $password, passwordMode: true,
+                                  header: "Password",
+                                  placeholder: "Enter your password",
+                                  iconName: "lock.open.fill")
                         .padding(.vertical, 8)
-                    TextFieldView(string: $confirmPassword, passwordMode: true, header: "Confirm password", placeholder: "Confirm your password", iconName: "repeat")
+                    
+                    TextFieldView(string: $confirmPassword, passwordMode: true,
+                                  header: "Confirm password",
+                                  placeholder: "Confirm your password",
+                                  iconName: "repeat")
                         .padding(.vertical, 8)
                 }
                 .padding(.horizontal, 30)
@@ -72,16 +83,9 @@ struct RegistrationPageView: View {
                 Spacer()
                 
                 VStack {
-                    Button(action: { self.registration() }) {
-                        Rectangle()
-                            .fill(Color.init(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
-                            .frame(height: 50, alignment: .center)
-                            .overlay(
-                                Text("Continue")
-                                .foregroundColor(.white)
-                                .bold())
-                            .cornerRadius(8)
-                    }
+                    FillButton(text: "Continue", action: {
+                        self.registration()
+                    })
                     .alert(isPresented: $showingAlert) {
                         Alert(title: Text("Error!"), message: Text(self.errorMessage!), dismissButton: .destructive(Text("OK")))
                     }

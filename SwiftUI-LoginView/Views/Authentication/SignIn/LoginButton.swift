@@ -17,6 +17,7 @@ struct LoginButtons: View {
     
     @State private var errorMesssage: String?
     @State private var showingAlert = false
+    @State private var showingVerificationAlert = false
     @State private var showingSignUpPage = false
     
     func login() {
@@ -29,7 +30,7 @@ struct LoginButtons: View {
         
             if !Auth.auth().currentUser!.isEmailVerified {
                 self.errorMesssage = "Your account has been created but not verified. Confirm registration by your email."
-                self.showingAlert = true
+                self.showingVerificationAlert = true
                 return
             }
             
@@ -42,10 +43,14 @@ struct LoginButtons: View {
             FillButton(text: "Sign In", action: {
                 self.login()
             })
-            .alert(isPresented: $showingAlert) {
-                Alert(title:Text("Error!"),
-                    message: Text(self.errorMesssage!),
-                    dismissButton: .destructive(Text("OK")))
+            .alert(isPresented: $showingVerificationAlert) {
+                Alert(title: Text("Error"),
+                      message: Text(errorMesssage!),
+                      primaryButton: .cancel(),
+                      secondaryButton: .default(Text("Send email again"), action: {
+                            Auth.auth().currentUser?.sendEmailVerification(completion: nil)
+                      })
+                )
             }
             
             HStack {
