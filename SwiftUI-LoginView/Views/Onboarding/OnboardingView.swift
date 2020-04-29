@@ -8,25 +8,18 @@
 
 import SwiftUI
 
-struct OnboardingViewController: View {
-    @Binding var isGetStarted: Bool
-    
-    var titleTransition: AnyTransition {
-        let transition = AnyTransition.move(edge: .bottom)
-            .combined(with: .opacity)
-        return transition
-    }
+struct OnboardingView: View {
+    @Binding var currentPage: pageState
 
     var body: some View {
         GeometryReader { geometry in
-            VStack(alignment: .leading) {
+            VStack(alignment: .center) {
                 Spacer()
                 Text("Auth application")
                     .font(.title)
                     .bold()
                     .padding()
                     .animation(Animation.spring().delay(0.3))
-                    .transition(self.titleTransition)
                     
                 Spacer()
                 
@@ -36,7 +29,7 @@ struct OnboardingViewController: View {
                 Spacer()
                 
                 FillButton(text: "Get Started", action: {
-                    self.isGetStarted = false
+                    self.currentPage = .login
                 })
                 .frame(width: geometry.size.width * 0.85, height: geometry.size.height * 0.07, alignment: .center)
                 Spacer()
@@ -46,8 +39,8 @@ struct OnboardingViewController: View {
 }
 
 struct OnboardingViewController_Previews: PreviewProvider {
-    @State static var isGetStarted = true
+    @State static var page: pageState = .onboarding
     static var previews: some View {
-        OnboardingViewController(isGetStarted: $isGetStarted)
+        OnboardingView(currentPage: $page)
     }
 }

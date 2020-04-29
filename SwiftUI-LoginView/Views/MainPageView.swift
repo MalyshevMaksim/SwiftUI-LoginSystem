@@ -10,6 +10,7 @@ import SwiftUI
 
 struct MainPageView: View {
     @ObservedObject var session: EmailAuthenticationCntroller
+    @Binding var currentPage: pageState
     @State private var isPagePresented = false
     @State private var isSignOutPresented = false
     
@@ -31,6 +32,7 @@ struct MainPageView: View {
                             .clipShape(Circle())
                             .shadow(radius: 10)
                             .padding()
+                        
                         VStack {
                             Text("Email:")
                                 .bold()
@@ -55,7 +57,11 @@ struct MainPageView: View {
                             .cornerRadius(8)
                     }
                     .actionSheet(isPresented: $isSignOutPresented) {
-                        ActionSheet(title: Text("Warning"), message: Text("Are you sure you want to sign out?"), buttons: [.cancel(),.destructive(Text("Sign out"), action: { self.session.logout() })])
+                        ActionSheet(title: Text("Warning"),
+                                    message: Text("Are you sure you want to sign out?"),
+                                    buttons: [.cancel(),.destructive(Text("Sign out"), action: {
+                                        self.currentPage = .login
+                                        self.session.logout() })])
                     }
                     .padding()
                 }
@@ -70,7 +76,8 @@ struct MainPageView: View {
 }
 
 struct MainPageView_Previews: PreviewProvider {
+    @State static var currentPage: pageState = .main
     static var previews: some View {
-        MainPageView(session: EmailAuthenticationCntroller())
+        MainPageView(session: EmailAuthenticationCntroller(), currentPage: $currentPage)
     }
 }

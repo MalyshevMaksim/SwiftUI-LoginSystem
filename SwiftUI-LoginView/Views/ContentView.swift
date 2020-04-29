@@ -9,31 +9,42 @@
 import SwiftUI
 import Firebase
 
+
+enum pageState {
+    case onboarding
+    case login
+    case main
+}
+
 struct ContentView: View {
-    @State private var isOnboarding = true
     @ObservedObject var session = EmailAuthenticationCntroller()
     
-    var titleTransition: AnyTransition {
-        let transition = AnyTransition.move(edge: .bottom)
-        return transition
-    }
+    // when entering the application, by default we show onboadring
+    @State private var currentPage: pageState = .onboarding
     
     var body: some View {
         ZStack {
-            if session.isLogin ?? false {
-                MainPageView(session: self.session)
-            }
-            else {
-                if isOnboarding {
-                    OnboardingViewController(isGetStarted: $isOnboarding)
-                }
-                else {
-                    LoginView()
-                }
-            }
+            containedView()
         }
         .onAppear {
-            self.session.initTest()
+            // initialize the session when logging in to the app
+            self.session.initSession()
+            
+            // if the user was logged in, we give them access to the main page
+            if self.session.isLogin == true {
+                self.currentPage = .main
+            }
+        }
+    }
+    
+    func containedView() -> AnyView {
+       switch currentPage {
+       case .onboarding:
+            return AnyView(OnboardingView(currentPage: $currentPage))
+       case .login:
+            return AnyView(LoginView(session: session, currentPage: $currentPage))
+       case .main:
+            return AnyView(MainPageView(session: session, currentPage: $currentPage))
         }
     }
 }

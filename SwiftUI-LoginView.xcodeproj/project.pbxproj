@@ -12,6 +12,7 @@
 		B521687D2455431E00018F73 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B521687C2455431E00018F73 /* LoginButton.swift */; };
 		B526833B244BC84A001E2A3F /* EmailAuthenticationCntroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B526833A244BC84A001E2A3F /* EmailAuthenticationCntroller.swift */; };
 		B5288C27245868C5003DB81A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5288C26245868C5003DB81A /* ResetPasswordView.swift */; };
+		B5288C292458AEBF003DB81A /* ResetSuccessful.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5288C282458AEBE003DB81A /* ResetSuccessful.swift */; };
 		B54739E52458324F00DD687C /* RegistrationInputPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54739E42458324F00DD687C /* RegistrationInputPage.swift */; };
 		B557014D245178AD00E9EB51 /* LoginFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B557014C245178AD00E9EB51 /* LoginFooterView.swift */; };
 		B5A683AA24474E8E00892E03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A683A924474E8E00892E03 /* AppDelegate.swift */; };
@@ -26,13 +27,11 @@
 		B5A683C42447BBB400892E03 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A683C32447BBB400892E03 /* PageControl.swift */; };
 		B5ABD32F244894C700C6A4F0 /* OnboardingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD32E244894C700C6A4F0 /* OnboardingDetailView.swift */; };
 		B5ABD3312448E12B00C6A4F0 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD3302448E12B00C6A4F0 /* OnboardingView.swift */; };
-		B5ABD3352448EF5600C6A4F0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD3342448EF5600C6A4F0 /* LoginView.swift */; };
-		B5ABD3372448FD4900C6A4F0 /* LoginPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD3362448FD4900C6A4F0 /* LoginPageView.swift */; };
+		B5ABD3372448FD4900C6A4F0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD3362448FD4900C6A4F0 /* LoginView.swift */; };
 		B5ABD345244A6A9300C6A4F0 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD344244A6A9300C6A4F0 /* TextFieldView.swift */; };
 		B5BAD36F2452C70500FF45C7 /* MainPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BAD36E2452C70500FF45C7 /* MainPageView.swift */; };
 		B5F61EA1244BAA6400FEE0EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5F61EA0244BAA6400FEE0EB /* GoogleService-Info.plist */; };
 		B5F69382244F7C8600A4CCD5 /* RegistrationPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F69381244F7C8600A4CCD5 /* RegistrationPageView.swift */; };
-		B5F8B951244C91CF00A453A6 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8B950244C91CF00A453A6 /* UserModel.swift */; };
 		B5F8B953244C926D00A453A6 /* OnboardingPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8B952244C926D00A453A6 /* OnboardingPageModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +42,7 @@
 		B521687C2455431E00018F73 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		B526833A244BC84A001E2A3F /* EmailAuthenticationCntroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthenticationCntroller.swift; sourceTree = "<group>"; };
 		B5288C26245868C5003DB81A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
+		B5288C282458AEBE003DB81A /* ResetSuccessful.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetSuccessful.swift; sourceTree = "<group>"; };
 		B54739E42458324F00DD687C /* RegistrationInputPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationInputPage.swift; sourceTree = "<group>"; };
 		B557014C245178AD00E9EB51 /* LoginFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFooterView.swift; sourceTree = "<group>"; };
 		B5A683A624474E8E00892E03 /* SwiftUI-LoginView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI-LoginView.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,13 +59,11 @@
 		B5A683C32447BBB400892E03 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		B5ABD32E244894C700C6A4F0 /* OnboardingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDetailView.swift; sourceTree = "<group>"; };
 		B5ABD3302448E12B00C6A4F0 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		B5ABD3342448EF5600C6A4F0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		B5ABD3362448FD4900C6A4F0 /* LoginPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageView.swift; sourceTree = "<group>"; };
+		B5ABD3362448FD4900C6A4F0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B5ABD344244A6A9300C6A4F0 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		B5BAD36E2452C70500FF45C7 /* MainPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageView.swift; sourceTree = "<group>"; };
 		B5F61EA0244BAA6400FEE0EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B5F69381244F7C8600A4CCD5 /* RegistrationPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPageView.swift; sourceTree = "<group>"; };
-		B5F8B950244C91CF00A453A6 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		B5F8B952244C926D00A453A6 /* OnboardingPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageModel.swift; sourceTree = "<group>"; };
 		E810B4110D991516F607CB7F /* Pods-SwiftUI-LoginView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUI-LoginView.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUI-LoginView/Pods-SwiftUI-LoginView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,12 +91,12 @@
 		B52168782455421500018F73 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
-				B5ABD3342448EF5600C6A4F0 /* LoginView.swift */,
-				B5ABD3362448FD4900C6A4F0 /* LoginPageView.swift */,
+				B5ABD3362448FD4900C6A4F0 /* LoginView.swift */,
 				B521687A2455427200018F73 /* LoginTextFields.swift */,
 				B521687C2455431E00018F73 /* LoginButton.swift */,
 				B557014C245178AD00E9EB51 /* LoginFooterView.swift */,
 				B5288C26245868C5003DB81A /* ResetPasswordView.swift */,
+				B5288C282458AEBE003DB81A /* ResetSuccessful.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -126,7 +124,6 @@
 		B526833D244C86B5001E2A3F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B5F8B950244C91CF00A453A6 /* UserModel.swift */,
 				B5F8B952244C926D00A453A6 /* OnboardingPageModel.swift */,
 			);
 			path = Models;
@@ -339,7 +336,6 @@
 				B5A683C22447725800892E03 /* OnboardingListView.swift in Sources */,
 				B5A683AE24474E8E00892E03 /* ContentView.swift in Sources */,
 				B5288C27245868C5003DB81A /* ResetPasswordView.swift in Sources */,
-				B5F8B951244C91CF00A453A6 /* UserModel.swift in Sources */,
 				B5F69382244F7C8600A4CCD5 /* RegistrationPageView.swift in Sources */,
 				B5BAD36F2452C70500FF45C7 /* MainPageView.swift in Sources */,
 				B5ABD32F244894C700C6A4F0 /* OnboardingDetailView.swift in Sources */,
@@ -348,10 +344,10 @@
 				B5ABD345244A6A9300C6A4F0 /* TextFieldView.swift in Sources */,
 				B5F8B953244C926D00A453A6 /* OnboardingPageModel.swift in Sources */,
 				B54739E52458324F00DD687C /* RegistrationInputPage.swift in Sources */,
-				B5ABD3372448FD4900C6A4F0 /* LoginPageView.swift in Sources */,
-				B5ABD3352448EF5600C6A4F0 /* LoginView.swift in Sources */,
+				B5ABD3372448FD4900C6A4F0 /* LoginView.swift in Sources */,
 				B521687D2455431E00018F73 /* LoginButton.swift in Sources */,
 				B5A683BE2447504700892E03 /* PageViewController.swift in Sources */,
+				B5288C292458AEBF003DB81A /* ResetSuccessful.swift in Sources */,
 				B557014D245178AD00E9EB51 /* LoginFooterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

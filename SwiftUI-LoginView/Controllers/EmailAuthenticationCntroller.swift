@@ -10,18 +10,15 @@ import Firebase
 import SwiftUI
 
 class EmailAuthenticationCntroller: ObservableObject {
-    //@Published var user: UserModel?
     @Published var isLogin: Bool?
     @Published var session: User?
     
-    func initTest() {
+    func initSession() {
         session = Auth.auth().currentUser
         if session != nil && session!.isEmailVerified {
             self.isLogin = true
-            print("OK!")
         }
         else {
-            print("Dont!")
             self.isLogin = false
         }
     }

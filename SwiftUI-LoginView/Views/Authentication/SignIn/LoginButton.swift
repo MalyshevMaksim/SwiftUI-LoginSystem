@@ -11,11 +11,13 @@ import Firebase
 
 struct LoginButtons: View {
     @ObservedObject var session: EmailAuthenticationCntroller
+    @Binding var currentPage: pageState
     
     @Binding var bindEmail: String
     @Binding var bindPassword:String
     
     @State private var errorMesssage: String?
+    
     @State private var showingAlert = false
     @State private var showingVerificationAlert = false
     @State private var showingSignUpPage = false
@@ -34,7 +36,8 @@ struct LoginButtons: View {
                 return
             }
             
-            self.session.isLogin = true
+            self.session.initSession()
+            self.currentPage = .main
         }
     }
     
@@ -72,8 +75,9 @@ struct LoginButtons: View {
 struct LoginButtons_Previews: PreviewProvider {
     @State static var email = ""
     @State static var password = ""
+    @State static var page: pageState = .login
     @ObservedObject static var session = EmailAuthenticationCntroller()
     static var previews: some View {
-        LoginButtons(session: session, bindEmail: $email, bindPassword: $password)
+        LoginButtons(session: session, currentPage: $page, bindEmail: $email, bindPassword: $password)
     }
 }
