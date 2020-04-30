@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @Binding var currentPage: pageState
+    var presentLoginView: (()->()) = {}
 
     var body: some View {
         GeometryReader { geometry in
@@ -19,7 +19,6 @@ struct OnboardingView: View {
                     .font(.title)
                     .bold()
                     .padding()
-                    .animation(Animation.spring().delay(0.3))
                     
                 Spacer()
                 
@@ -29,7 +28,7 @@ struct OnboardingView: View {
                 Spacer()
                 
                 FillButton(text: "Get Started", action: {
-                    self.currentPage = .login
+                    self.presentLoginView()
                 })
                 .frame(width: geometry.size.width * 0.85, height: geometry.size.height * 0.07, alignment: .center)
                 Spacer()
@@ -39,8 +38,7 @@ struct OnboardingView: View {
 }
 
 struct OnboardingViewController_Previews: PreviewProvider {
-    @State static var page: pageState = .onboarding
     static var previews: some View {
-        OnboardingView(currentPage: $page)
+        OnboardingView()
     }
 }

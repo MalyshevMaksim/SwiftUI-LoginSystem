@@ -32,75 +32,50 @@ func TextButton(text: String, action: @escaping () ->Void) -> some View {
 
 struct LoginView: View {
     @ObservedObject var session: EmailAuthenticationCntroller
-    @Binding var currentPage: pageState
-    
-    @State private var isPagePresented = false
     
     @State private var offset: CGFloat = 0
     @State private var email = ""
     @State private var password = ""
     
-    var customTransition: AnyTransition {
-        let transition = AnyTransition.move(edge: .bottom)
-        return transition
-    }
-    
     var body: some View {
-        ZStack {
-            if isPagePresented {
-                VStack(alignment: .leading) {
-                    VStack(alignment: .leading) {
-                        Text("Login to account")
-                            .bold()
-                            .font(.largeTitle)
-                            .padding(.horizontal, 30)
-                            .padding(.vertical, 3)
-                        Text("Please enter your credentials")
-                            .foregroundColor(.secondary)
-                            .padding(.horizontal, 30)
-                    }
-                    .padding(.top)
-                            
-                    Spacer()
-                    
-                    VStack(alignment: .center) {
-                        Image("asset1")
-                            .resizable()
-                            .scaledToFit()
-                            .padding()
-                        
-                        LoginTextFields(bindEmail: $email,
-                            bindPassword: $password,
-                            bindOffset: $offset)
-                            .padding(.bottom)
-                        
-                        LoginButtons(session: session,
-                            currentPage: $currentPage,
-                            bindEmail: $email,
-                            bindPassword: $password)
-                    }
+        VStack(alignment: .leading) {
+            Text("Login to account")
+                .bold()
+                .font(.largeTitle)
+                .padding(.horizontal, 30)
+                .padding(.top)
+                
+            Spacer()
+            
+            VStack(alignment: .center) {
+                Image("asset1")
+                    .resizable()
+                    .scaledToFit()
+                    .padding()
+                
+                LoginTextFields(bindEmail: $email,
+                    bindPassword: $password,
+                    bindOffset: $offset)
                     .padding(.bottom)
-                    .padding(.horizontal, 30)
-                    
-                    LoginFooterView()
-                        .padding(.horizontal, 20)
-                        .padding(.bottom)
-                }
-                .animation(.spring())
-                .transition(customTransition)
+                
+                LoginButtons(session: session,
+                    bindEmail: $email,
+                    bindPassword: $password)
             }
-        }
-        .onAppear {
-            self.isPagePresented = true
+            .padding(.bottom)
+            .padding(.horizontal, 30)
+            
+            LoginFooterView()
+                .padding(.horizontal, 20)
+                .padding(.bottom)
         }
     }
 }
 
 struct LoginView_Previews: PreviewProvider {
     @ObservedObject static var session = EmailAuthenticationCntroller()
-    @State static var state: pageState = .login
     
     static var previews: some View {
-        LoginView(session: session, currentPage: $state)
+        LoginView(session: session)
     }
 }

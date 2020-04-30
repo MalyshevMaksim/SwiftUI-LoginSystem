@@ -30,6 +30,7 @@
 		B5ABD3372448FD4900C6A4F0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD3362448FD4900C6A4F0 /* LoginView.swift */; };
 		B5ABD345244A6A9300C6A4F0 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD344244A6A9300C6A4F0 /* TextFieldView.swift */; };
 		B5BAD36F2452C70500FF45C7 /* MainPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BAD36E2452C70500FF45C7 /* MainPageView.swift */; };
+		B5D2DF61245A35F000843336 /* ResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D2DF60245A35F000843336 /* ResetView.swift */; };
 		B5F61EA1244BAA6400FEE0EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5F61EA0244BAA6400FEE0EB /* GoogleService-Info.plist */; };
 		B5F69382244F7C8600A4CCD5 /* RegistrationPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F69381244F7C8600A4CCD5 /* RegistrationPageView.swift */; };
 		B5F8B953244C926D00A453A6 /* OnboardingPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8B952244C926D00A453A6 /* OnboardingPageModel.swift */; };
@@ -62,6 +63,7 @@
 		B5ABD3362448FD4900C6A4F0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B5ABD344244A6A9300C6A4F0 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		B5BAD36E2452C70500FF45C7 /* MainPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageView.swift; sourceTree = "<group>"; };
+		B5D2DF60245A35F000843336 /* ResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetView.swift; sourceTree = "<group>"; };
 		B5F61EA0244BAA6400FEE0EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B5F69381244F7C8600A4CCD5 /* RegistrationPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPageView.swift; sourceTree = "<group>"; };
 		B5F8B952244C926D00A453A6 /* OnboardingPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageModel.swift; sourceTree = "<group>"; };
@@ -95,8 +97,6 @@
 				B521687A2455427200018F73 /* LoginTextFields.swift */,
 				B521687C2455431E00018F73 /* LoginButton.swift */,
 				B557014C245178AD00E9EB51 /* LoginFooterView.swift */,
-				B5288C26245868C5003DB81A /* ResetPasswordView.swift */,
-				B5288C282458AEBE003DB81A /* ResetSuccessful.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -196,11 +196,22 @@
 		B5ABD3332448E24B00C6A4F0 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				B5D2DF62245A374B00843336 /* Reset */,
 				B52168792455421F00018F73 /* SignUp */,
 				B52168782455421500018F73 /* SignIn */,
 				B5ABD344244A6A9300C6A4F0 /* TextFieldView.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		B5D2DF62245A374B00843336 /* Reset */ = {
+			isa = PBXGroup;
+			children = (
+				B5288C282458AEBE003DB81A /* ResetSuccessful.swift */,
+				B5288C26245868C5003DB81A /* ResetPasswordView.swift */,
+				B5D2DF60245A35F000843336 /* ResetView.swift */,
+			);
+			path = Reset;
 			sourceTree = "<group>";
 		};
 		B6126006F392D024C7D5C23D /* Pods */ = {
@@ -344,6 +355,7 @@
 				B5ABD345244A6A9300C6A4F0 /* TextFieldView.swift in Sources */,
 				B5F8B953244C926D00A453A6 /* OnboardingPageModel.swift in Sources */,
 				B54739E52458324F00DD687C /* RegistrationInputPage.swift in Sources */,
+				B5D2DF61245A35F000843336 /* ResetView.swift in Sources */,
 				B5ABD3372448FD4900C6A4F0 /* LoginView.swift in Sources */,
 				B521687D2455431E00018F73 /* LoginButton.swift in Sources */,
 				B5A683BE2447504700892E03 /* PageViewController.swift in Sources */,

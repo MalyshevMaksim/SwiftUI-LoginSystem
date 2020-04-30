@@ -34,7 +34,7 @@ struct LoginTextFields: View {
                     self.isShowingResetPage = true
                 })
                 .sheet(isPresented: $isShowingResetPage) {
-                    ResetPasswordView(presentedBinding: self.$isShowingResetPage)
+                    ResetView(presentedBinding: self.$isShowingResetPage)
                 }
             }
             .padding(.vertical, 8)

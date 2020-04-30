@@ -11,7 +11,6 @@ import Firebase
 
 struct LoginButtons: View {
     @ObservedObject var session: EmailAuthenticationCntroller
-    @Binding var currentPage: pageState
     
     @Binding var bindEmail: String
     @Binding var bindPassword:String
@@ -37,7 +36,6 @@ struct LoginButtons: View {
             }
             
             self.session.initSession()
-            self.currentPage = .main
         }
     }
     
@@ -47,13 +45,18 @@ struct LoginButtons: View {
                 self.login()
             })
             .alert(isPresented: $showingVerificationAlert) {
-                Alert(title: Text("Error"),
+                Alert(title: Text("Error!"),
                       message: Text(errorMesssage!),
                       primaryButton: .cancel(),
                       secondaryButton: .default(Text("Send email again"), action: {
                             Auth.auth().currentUser?.sendEmailVerification(completion: nil)
                       })
                 )
+            }
+            .alert(isPresented: $showingAlert) {
+                Alert(title: Text("Error!"),
+                      message: Text(errorMesssage!),
+                      dismissButton: .destructive(Text("OK")))
             }
             
             HStack {
@@ -75,9 +78,8 @@ struct LoginButtons: View {
 struct LoginButtons_Previews: PreviewProvider {
     @State static var email = ""
     @State static var password = ""
-    @State static var page: pageState = .login
     @ObservedObject static var session = EmailAuthenticationCntroller()
     static var previews: some View {
-        LoginButtons(session: session, currentPage: $page, bindEmail: $email, bindPassword: $password)
+        LoginButtons(session: session, bindEmail: $email, bindPassword: $password)
     }
 }
