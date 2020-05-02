@@ -9,53 +9,39 @@
 import SwiftUI
 
 struct Successful: View {
-    @Binding var currentPage: resetPageState
     @Binding var presentedBinding: Bool
-    @State private var isPresented = false
-    
-    var customTransition: AnyTransition {
-        let transition = AnyTransition.move(edge: .bottom)
-        return transition
-    }
     
     var body: some View {
-        ZStack {
-            if isPresented == true {
-                VStack {
-                    Text("Successful")
-                        .font(.title)
-                        .bold()
-                        .padding(.vertical)
-                    Image("asset3")
-                        .resizable()
-                        .scaledToFit()
-                    
-                    Text("Password recovery instructions have been sent to your email.")
-                        .foregroundColor(.secondary)
-                        .padding(.vertical)
-                        .padding(.horizontal, 30)
-                        .multilineTextAlignment(.center)
-                    
-                    FillButton(text: "Continue") {
-                        self.presentedBinding = false
-                    }
+        VStack(alignment: .trailing) {
+            Spacer()
+            VStack {
+                Image("asset3")
+                    .resizable()
+                    .scaledToFit()
+                Text("Successful")
+                    .font(.title)
+                    .bold()
+                Text("Password recovery instructions have been sent to your email.")
+                    .foregroundColor(.secondary)
                     .padding(.vertical)
                     .padding(.horizontal, 30)
-                }
-                .animation(.spring())
-                .transition(customTransition)
+                    .multilineTextAlignment(.center)
             }
-        }
-        .onAppear {
-            self.isPresented = true
+            
+            Spacer()
+            
+            FillButton(text: "Continue") {
+                self.presentedBinding = false
+            }
+            .padding(.vertical)
+            .padding(.horizontal, 30)
         }
     }
 }
 
 struct Successful_Previews: PreviewProvider {
     @State static var bool = true
-    @State static var test: resetPageState = .successful
     static var previews: some View {
-        Successful(currentPage: $test, presentedBinding: $bool)
+        Successful(presentedBinding: $bool)
     }
 }

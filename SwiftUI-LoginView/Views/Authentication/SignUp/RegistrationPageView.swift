@@ -68,17 +68,6 @@ struct RegistrationPageView: View {
                 }
                 .padding(.horizontal, 30)
                 .padding(.vertical)
-                    
-                .onAppear {
-                    NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { (noti) in
-                        let change = noti.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
-                        self.xOffset += change.height / 2
-                    }
-                    
-                    NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { (noti) in
-                        self.xOffset = 0
-                    }
-                }
                 
                 Spacer()
                 

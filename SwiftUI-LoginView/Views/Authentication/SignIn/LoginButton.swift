@@ -18,20 +18,28 @@ struct LoginButtons: View {
     @State private var errorMesssage: String?
     
     @State private var showingAlert = false
-    @State private var showingVerificationAlert = false
     @State private var showingSignUpPage = false
+    
+    @State private var alert: alertState = .standartMessage
+    
+    enum alertState {
+        case standartMessage
+        case verifivationError
+    }
     
     func login() {
        session.login(email: bindEmail, password: bindPassword) { user, error in
             if error != nil {
                 self.errorMesssage = error?.localizedDescription
+                self.alert = .standartMessage
                 self.showingAlert = true
                 return
             }
         
             if !Auth.auth().currentUser!.isEmailVerified {
                 self.errorMesssage = "Your account has been created but not verified. Confirm registration by your email."
-                self.showingVerificationAlert = true
+                self.alert = .verifivationError
+                self.showingAlert = true
                 return
             }
             
@@ -44,19 +52,22 @@ struct LoginButtons: View {
             FillButton(text: "Sign In", action: {
                 self.login()
             })
-            .alert(isPresented: $showingVerificationAlert) {
-                Alert(title: Text("Error!"),
-                      message: Text(errorMesssage!),
-                      primaryButton: .cancel(),
-                      secondaryButton: .default(Text("Send email again"), action: {
-                            Auth.auth().currentUser?.sendEmailVerification(completion: nil)
-                      })
-                )
-            }
             .alert(isPresented: $showingAlert) {
-                Alert(title: Text("Error!"),
-                      message: Text(errorMesssage!),
-                      dismissButton: .destructive(Text("OK")))
+                if alert == alertState.verifivationError {
+                    return Alert(title: Text("Error!"),
+                          message: Text(errorMesssage!),
+                          primaryButton: .cancel(),
+                          secondaryButton: .default(Text("Send email again"), action: {
+                                Auth.auth().currentUser?.sendEmailVerification(completion: nil)
+                            
+                          })
+                    )
+                }
+                else {
+                    return Alert(title: Text("Error!"),
+                    message: Text(errorMesssage!),
+                    dismissButton: .destructive(Text("OK")))
+                }
             }
             
             HStack {

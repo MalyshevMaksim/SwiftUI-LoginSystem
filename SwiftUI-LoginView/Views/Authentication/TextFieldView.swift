@@ -15,6 +15,7 @@ struct TextFieldView: View {
     var header: String
     var placeholder: String
     var iconName: String
+    var onEditingChanged: ((Bool)->()) = {_ in }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -30,7 +31,7 @@ struct TextFieldView: View {
                 }
                 else {
                     TextField(placeholder, text: $string, onEditingChanged: { flag in
-                        
+                        self.onEditingChanged(flag)
                     })
                 }
                 

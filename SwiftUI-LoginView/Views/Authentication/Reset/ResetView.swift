@@ -8,25 +8,27 @@
 
 import SwiftUI
 
-enum resetPageState {
-    case reset
-    case successful
-}
-
 struct ResetView: View {
     @Binding var presentedBinding: Bool
-    @State private var currentPage: resetPageState = .reset
+    @State private var showingPage = false
     
     var body: some View {
-        containedView()
-    }
-    
-    func containedView() -> AnyView {
-        switch currentPage {
-        case .reset:
-            return AnyView(ResetPasswordView(currentPage: $currentPage, presentedBinding: $presentedBinding))
-        case .successful:
-            return AnyView(Successful(currentPage: $currentPage, presentedBinding: $presentedBinding))
+        ZStack {
+            VStack {
+                if showingPage == true {
+                    Successful(presentedBinding: $presentedBinding)
+                        .animation(.spring())
+                        .transition(.move(edge: .trailing))
+                }
+                else {
+                    ResetPasswordView(presentedBinding: $presentedBinding, presentSuccessfulMessage: {
+                            withAnimation {
+                                self.showingPage = true
+                            }
+                        })
+                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                }
+            }
         }
     }
 }

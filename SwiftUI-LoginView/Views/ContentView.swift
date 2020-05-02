@@ -7,15 +7,7 @@
 //
 
 import SwiftUI
-import UIKit
 import Firebase
-
-
-enum pageState {
-    case onboarding
-    case login
-    case main
-}
 
 struct ContentView: View {
     @ObservedObject var session = EmailAuthenticationCntroller()
@@ -26,7 +18,7 @@ struct ContentView: View {
             if showingPage {
                 LoginView(session: session)
                     .animation(.spring())
-                    .transition(.move(edge: .bottom))
+                    .transition(AnyTransition.move(edge: .bottom).combined(with: .scale))
             }
             else {
                 OnboardingView(presentLoginView: {
@@ -34,7 +26,8 @@ struct ContentView: View {
                         self.showingPage = true
                     }
                 })
-                    .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top)))
+                    .transition(AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top))
+                        .combined(with: .scale))
             }
         }
         .onAppear {

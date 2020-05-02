@@ -34,9 +34,7 @@ struct MainPageView: View {
             }
             
             Spacer()
-            Button(action: {
-                self.isSignOutPresented = true
-            })
+            Button(action: { self.isSignOutPresented = true })
             {
                 Rectangle()
                     .fill(Color.init(#colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)))
@@ -50,8 +48,8 @@ struct MainPageView: View {
             .actionSheet(isPresented: $isSignOutPresented) {
                 ActionSheet(title: Text("Warning"),
                             message: Text("Are you sure you want to sign out?"),
-                            buttons: [.cancel(),.destructive(Text("Sign out"), action: {
-                                self.session.logout() })])
+                            buttons: [.cancel(),.destructive(Text("Sign out"),
+                            action: { self.session.logout() })])
             }
             .padding()
         }

@@ -39,19 +39,6 @@ struct LoginTextFields: View {
             }
             .padding(.vertical, 8)
         }
-
-        .onAppear {
-            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { (noti) in
-                
-                let change = noti.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
-                self.bindOffset += change.height / 4
-            }
-            
-            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { (noti) in
-                
-                self.bindOffset = 0
-            }
-        }
     }
 }
 
