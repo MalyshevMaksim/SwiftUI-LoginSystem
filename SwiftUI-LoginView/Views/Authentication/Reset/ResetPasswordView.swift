@@ -9,11 +9,18 @@
 import SwiftUI
 import Firebase
 
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
 struct ResetPasswordView: View {
     @State private var email = ""
     @State private var isShowingAlert = false
     @State private var errorMessage: String?
-
+    
+    @State var offset: CGFloat = 0
     @Binding var presentedBinding: Bool
     
     var presentSuccessfulMessage: (()->()) = {}
@@ -27,10 +34,16 @@ struct ResetPasswordView: View {
                 .padding()
                 
                 VStack {
-                    Image("reset")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: geometry.size.height * 0.35, alignment: .center)
+                    Spacer()
+                    
+                    if self.offset == 0 {
+                        Image("reset")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: geometry.size.height * 0.35, alignment: .center)
+                    }
+                    
+                    Spacer()
                     
                     VStack {
                         Text("Forgot Password?")
@@ -42,35 +55,39 @@ struct ResetPasswordView: View {
                             .multilineTextAlignment(.center)
                     }
                     .padding(.vertical)
-                    
-                    
-                    TextFieldView(string: self.$email,
-                                  header: "",
-                                  placeholder: "Enter email address",
-                                  iconName: "envelope.fill")
-                        .padding(.bottom)
                 
-                Spacer()
+                    TextFieldView(string: self.$email,
+                                  passwordMode: false,
+                                  placeholder: "Enter your email",
+                                  iconName: "envelope.fill",
+                                  onEditingChanged:  { flag in
+                                    withAnimation(.spring()) {
+                                        self.offset = flag ? 270 : 0
+                                    }
+                                    })
+                        .padding(.bottom, 40)
                     
-                FillButton(text: "Reset Password", action: {
-                    Auth.auth().sendPasswordReset(withEmail: self.email) { error in
-                        if error != nil {
-                            self.errorMessage = error?.localizedDescription
-                            self.isShowingAlert = true
-                            return
+                    FillButton(text: "Reset Password", action: {
+                        Auth.auth().sendPasswordReset(withEmail: self.email) { error in
+                            if error != nil {
+                                self.errorMessage = error?.localizedDescription
+                                self.isShowingAlert = true
+                                return
+                            }
+                            
+                            UIApplication.shared.endEditing()
+                            self.presentSuccessfulMessage()
                         }
-                        
-                        self.presentSuccessfulMessage()
-                    }
-                })
-                    .alert(isPresented: self.$isShowingAlert) {
-                        Alert(title: Text("Error!"),
-                              message: Text(self.errorMessage!),
-                              dismissButton: .destructive(Text("OK")))
-                }
+                    })
+                        .alert(isPresented: self.$isShowingAlert) {
+                            Alert(title: Text("Error!"),
+                                  message: Text(self.errorMessage!),
+                                  dismissButton: .destructive(Text("OK")))
+                        }
                     .padding(.bottom)
                 }
                 .padding(.horizontal, 30)
+                .offset(y: -self.offset)
             }
         }
     }

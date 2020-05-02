@@ -12,7 +12,6 @@ struct TextFieldView: View {
     @Binding var string: String
     
     var passwordMode = false
-    var header: String
     var placeholder: String
     var iconName: String
     var onEditingChanged: ((Bool)->()) = {_ in }
@@ -27,7 +26,9 @@ struct TextFieldView: View {
                     .padding(.leading, 20)
                 
                 if passwordMode {
-                    SecureField(placeholder, text: $string)
+                    SecureField(placeholder, text: $string, onCommit: {
+                        self.onEditingChanged(false)
+                    })
                 }
                 else {
                     TextField(placeholder, text: $string, onEditingChanged: { flag in
@@ -56,6 +57,6 @@ struct TextFieldView: View {
 struct TextFieldView_Previews: PreviewProvider {
     @State static var myCoolBool = ""
     static var previews: some View {
-        TextFieldView(string: $myCoolBool, header: "Email", placeholder: "Please enter your email", iconName: "envelope.fill")
+        TextFieldView(string: $myCoolBool, placeholder: "Please enter your email", iconName: "envelope.fill")
     }
 }

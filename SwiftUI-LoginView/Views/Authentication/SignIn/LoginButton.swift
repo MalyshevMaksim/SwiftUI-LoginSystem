@@ -16,7 +16,6 @@ struct LoginButtons: View {
     @Binding var bindPassword:String
     
     @State private var errorMesssage: String?
-    
     @State private var showingAlert = false
     @State private var showingSignUpPage = false
     
@@ -43,6 +42,7 @@ struct LoginButtons: View {
                 return
             }
             
+            UIApplication.shared.endEditing()
             self.session.initSession()
         }
     }
@@ -59,7 +59,6 @@ struct LoginButtons: View {
                           primaryButton: .cancel(),
                           secondaryButton: .default(Text("Send email again"), action: {
                                 Auth.auth().currentUser?.sendEmailVerification(completion: nil)
-                            
                           })
                     )
                 }

@@ -36,6 +36,7 @@ struct LoginView: View {
     @State private var offset: CGFloat = 0
     @State private var email = ""
     @State private var password = ""
+    @State private var isShowingResetPage = false
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -48,20 +49,47 @@ struct LoginView: View {
             Spacer()
             
             VStack(alignment: .center) {
-                Image("asset1")
-                    .resizable()
-                    .scaledToFit()
-                    .padding()
+                if offset == 0 {
+                    Image("asset1")
+                        .resizable()
+                        .scaledToFit()
+                        .padding()
+                }
                 
-                LoginTextFields(bindEmail: $email,
-                    bindPassword: $password,
-                    bindOffset: $offset)
-                    .padding(.bottom)
+                VStack {
+                    TextFieldView(string: self.$password,
+                        passwordMode: false,
+                        placeholder: "Enter your email",
+                        iconName: "envelope.fill",
+                        onEditingChanged:  { flag in
+                            self.offset = flag ? 170 : 0
+                        })
+                        .padding(.vertical, 8)
+                        
+                    VStack(alignment: .trailing) {
+                        TextFieldView(string: self.$password,
+                            passwordMode: true,
+                            placeholder: "Enter your password",
+                            iconName: "lock.open.fill",
+                            onEditingChanged:  { flag in
+                                self.offset = flag ? 170 : 0
+                            })
+                            
+                        TextButton(text: "Forgot your password?", action: {
+                            self.isShowingResetPage = true
+                        })
+                        .sheet(isPresented: $isShowingResetPage) {
+                            ResetView(presentedBinding: self.$isShowingResetPage)
+                        }
+                    }
+                    .padding(.vertical, 8)
+                }
                 
                 LoginButtons(session: session,
                     bindEmail: $email,
                     bindPassword: $password)
             }
+            .offset(y: -offset)
             .padding(.bottom)
             .padding(.horizontal, 30)
             
@@ -74,7 +102,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     @ObservedObject static var session = EmailAuthenticationCntroller()
-    
     static var previews: some View {
         LoginView(session: session)
     }

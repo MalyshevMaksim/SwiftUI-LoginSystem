@@ -29,13 +29,11 @@ struct RegistrationInputPage: View {
             .padding()
             
             TextFieldView(string: $firstName,
-                          header: "Enter your name",
                           placeholder: "Enter your name",
                           iconName: "folder")
                 .padding(.vertical, 8)
             
             TextFieldView(string: $firstName,
-                          header: "Enter your first name",
                           placeholder: "Enter your last name",
                           iconName: "folder")
                 .padding(.vertical, 8)

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ResetView: View {
     @Binding var presentedBinding: Bool
+    
     @State private var showingPage = false
     
     var body: some View {

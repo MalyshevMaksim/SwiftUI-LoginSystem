@@ -17,18 +17,23 @@ struct LoginTextFields: View {
     
     var body: some View {
          VStack {
-            TextFieldView(string: self.$bindEmail,
-                header: "Email",
+            TextFieldView(string: self.$bindPassword,
+                passwordMode: false,
                 placeholder: "Enter your email",
-                iconName: "envelope.fill")
-            .padding(.vertical, 8)
+                iconName: "envelope.fill",
+                onEditingChanged:  { flag in
+                    self.bindOffset = 150
+                })
+                .padding(.vertical, 8)
                 
             VStack(alignment: .trailing) {
                 TextFieldView(string: self.$bindPassword,
                     passwordMode: true,
-                    header: "Password",
                     placeholder: "Enter your password",
-                    iconName: "lock.open.fill")
+                    iconName: "lock.open.fill",
+                    onEditingChanged:  { flag in
+                        self.bindOffset = flag ? 150 : 0
+                    })
                     
                 TextButton(text: "Forgot your password?", action: {
                     self.isShowingResetPage = true
@@ -45,7 +50,7 @@ struct LoginTextFields: View {
 struct LoginTextFields_Previews: PreviewProvider {
     @State static var email = ""
     @State static var password = ""
-    @State static var offset: CGFloat = 1
+    @State static var offset: CGFloat = 0
 
     static var previews: some View {
         LoginTextFields(bindEmail: $email, bindPassword: $password, bindOffset: $offset)

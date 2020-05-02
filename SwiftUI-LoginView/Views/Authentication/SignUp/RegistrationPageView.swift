@@ -12,7 +12,7 @@ import Firebase
 struct RegistrationPageView: View {
     @Binding var presentedBinding: Bool
     @ObservedObject var session: EmailAuthenticationCntroller
-    @State private var xOffset: CGFloat = 0
+    @State private var offset: CGFloat = 0
     
     @State private var email = ""
     @State private var password = ""
@@ -34,59 +34,76 @@ struct RegistrationPageView: View {
                 return
             }
             
-            Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
+            Auth.auth().currentUser?.sendEmailVerification(completion: { error in
                 
             })
+            
+            UIApplication.shared.endEditing()
         }
     }
     
     var body: some View {
         NavigationView {
             VStack {
-                Image("asset2")
-                    .resizable()
-                    .scaledToFit()
-                
-                VStack {
-                    TextFieldView(string: $email,
-                                  header: "Email",
-                                  placeholder: "Enter your email",
-                                  iconName: "envelope.fill")
-                        .padding(.vertical, 8)
-                    
-                    TextFieldView(string: $password, passwordMode: true,
-                                  header: "Password",
-                                  placeholder: "Enter your password",
-                                  iconName: "lock.open.fill")
-                        .padding(.vertical, 8)
-                    
-                    TextFieldView(string: $confirmPassword, passwordMode: true,
-                                  header: "Confirm password",
-                                  placeholder: "Confirm your password",
-                                  iconName: "repeat")
-                        .padding(.vertical, 8)
+                if offset == 0 {
+                    Image("asset2")
+                        .resizable()
+                        .scaledToFit()
                 }
-                .padding(.horizontal, 30)
-                .padding(.vertical)
                 
                 Spacer()
                 
                 VStack {
-                    FillButton(text: "Continue", action: {
-                        self.registration()
-                    })
-                    .alert(isPresented: $showingAlert) {
-                        Alert(title: Text("Error!"), message: Text(self.errorMessage!), dismissButton: .destructive(Text("OK")))
-                    }
+                   TextFieldView(string: $email,
+                                 passwordMode: false,
+                                 placeholder: "Enter your email",
+                                 iconName: "envelope.fill",
+                                 onEditingChanged: { flag in
+                                    withAnimation(.spring()) {
+                                        self.offset = flag ? 100 : 0
+                                    }
+                                 })
+                        .padding(.vertical, 8)
+                    
+                    TextFieldView(string: $password,
+                                  passwordMode: true,
+                                  placeholder: "Enter your password",
+                                  iconName: "lock.open.fill",
+                                  onEditingChanged: { flag in
+                                    withAnimation(.spring()) {
+                                        self.offset = flag ? 100 : 0
+                                    }
+                                  })
+                        .padding(.vertical, 8)
+                    
+                    TextFieldView(string: $confirmPassword,
+                                  passwordMode: true,
+                                  placeholder: "Confirm your password",
+                                  iconName: "repeat",
+                                  onEditingChanged: { flag in
+                                    withAnimation(.spring()) {
+                                        self.offset = flag ? 100 : 0
+                                    }
+                                  })
+                        .padding(.vertical, 8)
                 }
-                .padding(.horizontal, 30)
+                .padding(.vertical)
+                
+                FillButton(text: "Continue", action: {
+                    self.registration()
+                })
+                .alert(isPresented: $showingAlert) {
+                    Alert(title: Text("Error!"), message: Text(self.errorMessage!), dismissButton: .destructive(Text("OK")))
+                }
             }
+            .offset(y: -offset)
+            .padding(.horizontal, 30)
             .navigationBarTitle("Create account")
             .navigationBarItems(trailing: Button("Cancel") {
                 self.presentedBinding = false
             })
         }
-        .offset(y: -xOffset)
+        .offset(y: -offset)
         .padding(.bottom)
         .padding(.bottom)
     }
