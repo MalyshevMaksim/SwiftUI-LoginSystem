@@ -26,7 +26,7 @@ struct LoginButtons: View {
         case verifivationError
     }
     
-    func login() {
+    fileprivate func login() {
        session.login(email: bindEmail, password: bindPassword) { user, error in
             if error != nil {
                 self.errorMesssage = error?.localizedDescription
@@ -47,39 +47,45 @@ struct LoginButtons: View {
         }
     }
     
+    fileprivate func createButton() -> some View {
+        return TextButton(text: "Sign Up", action: {
+            self.showingSignUpPage = true
+        })
+        .sheet(isPresented: self.$showingSignUpPage) {
+            RegistrationPageView(presentedBinding: self.$showingSignUpPage, session: self.session)
+        }
+    }
+    
+    fileprivate func createSignInButton() -> some View {
+        return FillButton(text: "Sign In", action: {
+            self.login()
+        })
+        .alert(isPresented: $showingAlert) {
+            if alert == alertState.verifivationError {
+                return Alert(title: Text("Error!"),
+                      message: Text(errorMesssage!),
+                      primaryButton: .cancel(),
+                      secondaryButton: .default(Text("Send email again"), action: {
+                            Auth.auth().currentUser?.sendEmailVerification(completion: nil)
+                      })
+                )
+            }
+            else {
+                return Alert(title: Text("Error!"),
+                message: Text(errorMesssage!),
+                dismissButton: .destructive(Text("OK")))
+            }
+        }
+    }
+    
     var body: some View {
         VStack(alignment: .trailing) {
-            FillButton(text: "Sign In", action: {
-                self.login()
-            })
-            .alert(isPresented: $showingAlert) {
-                if alert == alertState.verifivationError {
-                    return Alert(title: Text("Error!"),
-                          message: Text(errorMesssage!),
-                          primaryButton: .cancel(),
-                          secondaryButton: .default(Text("Send email again"), action: {
-                                Auth.auth().currentUser?.sendEmailVerification(completion: nil)
-                          })
-                    )
-                }
-                else {
-                    return Alert(title: Text("Error!"),
-                    message: Text(errorMesssage!),
-                    dismissButton: .destructive(Text("OK")))
-                }
-            }
-            
+            createSignInButton()
             HStack {
                 Text("No account?")
                     .font(.footnote)
                     .foregroundColor(.secondary)
-                
-                TextButton(text: "Sign Up", action: {
-                    self.showingSignUpPage = true
-                })
-                .sheet(isPresented: self.$showingSignUpPage) {
-                    RegistrationPageView(presentedBinding: self.$showingSignUpPage, session: self.session)
-                }
+                createButton()
             }
         }
     }

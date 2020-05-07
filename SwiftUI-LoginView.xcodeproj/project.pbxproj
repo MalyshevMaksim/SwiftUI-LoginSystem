@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A048DB140422F5F45FF965DA /* Pods_SwiftUI_LoginView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F38359FA8C528B63190C42 /* Pods_SwiftUI_LoginView.framework */; };
-		B521687B2455427200018F73 /* LoginTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = B521687A2455427200018F73 /* LoginTextFields.swift */; };
 		B521687D2455431E00018F73 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B521687C2455431E00018F73 /* LoginButton.swift */; };
 		B526833B244BC84A001E2A3F /* EmailAuthenticationCntroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B526833A244BC84A001E2A3F /* EmailAuthenticationCntroller.swift */; };
 		B5288C27245868C5003DB81A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5288C26245868C5003DB81A /* ResetPasswordView.swift */; };
@@ -39,7 +38,6 @@
 /* Begin PBXFileReference section */
 		54F38359FA8C528B63190C42 /* Pods_SwiftUI_LoginView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUI_LoginView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B1D3FBD0C8A072638BA5B0B /* Pods-SwiftUI-LoginView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUI-LoginView.release.xcconfig"; path = "Target Support Files/Pods-SwiftUI-LoginView/Pods-SwiftUI-LoginView.release.xcconfig"; sourceTree = "<group>"; };
-		B521687A2455427200018F73 /* LoginTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFields.swift; sourceTree = "<group>"; };
 		B521687C2455431E00018F73 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		B526833A244BC84A001E2A3F /* EmailAuthenticationCntroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthenticationCntroller.swift; sourceTree = "<group>"; };
 		B5288C26245868C5003DB81A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
@@ -94,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				B5ABD3362448FD4900C6A4F0 /* LoginView.swift */,
-				B521687A2455427200018F73 /* LoginTextFields.swift */,
 				B521687C2455431E00018F73 /* LoginButton.swift */,
 				B557014C245178AD00E9EB51 /* LoginFooterView.swift */,
 			);
@@ -342,7 +339,6 @@
 				B5A683C02447689000892E03 /* OnboardingPageView.swift in Sources */,
 				B5A683C42447BBB400892E03 /* PageControl.swift in Sources */,
 				B5A683AA24474E8E00892E03 /* AppDelegate.swift in Sources */,
-				B521687B2455427200018F73 /* LoginTextFields.swift in Sources */,
 				B5A683AC24474E8E00892E03 /* SceneDelegate.swift in Sources */,
 				B5A683C22447725800892E03 /* OnboardingListView.swift in Sources */,
 				B5A683AE24474E8E00892E03 /* ContentView.swift in Sources */,

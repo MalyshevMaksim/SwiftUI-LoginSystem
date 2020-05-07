@@ -22,7 +22,7 @@ struct OnboardingView: View {
                     
                 Spacer()
                 
-                OnboardingListView(artists.map { OnboardingPageView(pageData: $0) })
+                OnboardingListView(pageViewControllers.map { OnboardingPageView(pageData: $0) })
                     .frame(width: geometry.size.width * 0.85, height: geometry.size.height * 0.65)
                 Spacer()
                 Spacer()

@@ -60,7 +60,7 @@ struct RegistrationPageView: View {
                                  iconName: "envelope.fill",
                                  onEditingChanged: { flag in
                                     withAnimation(.spring()) {
-                                        self.offset = flag ? 100 : 0
+                                        self.offset = flag ? 210 : 0
                                     }
                                  })
                         .padding(.vertical, 8)
@@ -71,7 +71,7 @@ struct RegistrationPageView: View {
                                   iconName: "lock.open.fill",
                                   onEditingChanged: { flag in
                                     withAnimation(.spring()) {
-                                        self.offset = flag ? 100 : 0
+                                        self.offset = flag ? 210 : 0
                                     }
                                   })
                         .padding(.vertical, 8)
@@ -82,7 +82,7 @@ struct RegistrationPageView: View {
                                   iconName: "repeat",
                                   onEditingChanged: { flag in
                                     withAnimation(.spring()) {
-                                        self.offset = flag ? 100 : 0
+                                        self.offset = flag ? 210 : 0
                                     }
                                   })
                         .padding(.vertical, 8)
@@ -98,12 +98,11 @@ struct RegistrationPageView: View {
             }
             .offset(y: -offset)
             .padding(.horizontal, 30)
-            .navigationBarTitle("Create account")
+            .navigationBarTitle(offset == 0 ? "Create account" : "")
             .navigationBarItems(trailing: Button("Cancel") {
                 self.presentedBinding = false
             })
         }
-        .offset(y: -offset)
         .padding(.bottom)
         .padding(.bottom)
     }

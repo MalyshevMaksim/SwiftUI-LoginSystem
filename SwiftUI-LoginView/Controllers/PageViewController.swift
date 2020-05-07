@@ -9,15 +9,11 @@
 import SwiftUI
 
 struct PageViewController: UIViewControllerRepresentable {
-    
-    // An array that provides the views to display as a page
     var viewControllers: [UIViewController]
     @Binding var currentPage: Int
     
     func makeUIViewController(context: Context) -> UIPageViewController {
-        let pageController = UIPageViewController(
-            transitionStyle: .scroll,
-            navigationOrientation: .horizontal)
+        let pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
         pageController.dataSource = context.coordinator
         pageController.delegate = context.coordinator
         

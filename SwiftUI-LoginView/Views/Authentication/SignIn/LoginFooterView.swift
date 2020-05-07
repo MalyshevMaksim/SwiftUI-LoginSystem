@@ -9,6 +9,25 @@
 import SwiftUI
 
 struct LoginFooterView: View {
+    
+    fileprivate func createButton(title: String, imageName: String) -> some View {
+        return Button(action: {}) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(Color.gray, lineWidth: 1)
+                HStack {
+                    Image(imageName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 22, height: 22, alignment: .center)
+                    Text(title)
+                        .font(.caption)
+                        .bold()
+                }
+            }
+        }
+    }
+    
     var body: some View {
         VStack {
             HStack {
@@ -22,44 +41,14 @@ struct LoginFooterView: View {
                     .fill(Color.gray)
                     .frame(height: 0.5)
             }
-            .padding(.vertical, 5)
-            
+                .padding(.vertical, 5)
             HStack {
-                Button(action: {}) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color.gray, lineWidth: 1)
-                        HStack {
-                            Image("google")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 22, height: 22, alignment: .center)
-                            Text("Google")
-                                .font(.caption)
-                                .bold()
-                        }
-                    }
-                }
-                .frame(height: 45, alignment: .center)
-                .buttonStyle(PlainButtonStyle())
-                
-                Button(action: {}) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color.gray, lineWidth: 1)
-                        HStack {
-                            Image("apple")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 22, height: 22, alignment: .center)
-                            Text("Apple")
-                                .font(.caption)
-                                .bold()
-                        }
-                    }
-                }
-                .frame(height: 45, alignment: .center)
-                .buttonStyle(PlainButtonStyle())
+                createButton(title: "Google", imageName: "google")
+                    .frame(height: 45, alignment: .center)
+                    .buttonStyle(PlainButtonStyle())
+                createButton(title: "Apple", imageName: "apple")
+                    .frame(height: 45, alignment: .center)
+                    .buttonStyle(PlainButtonStyle())
             }
         }
     }

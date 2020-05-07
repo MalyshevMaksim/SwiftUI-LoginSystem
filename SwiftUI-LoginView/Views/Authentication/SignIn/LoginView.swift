@@ -32,11 +32,10 @@ func TextButton(text: String, action: @escaping () ->Void) -> some View {
 
 struct LoginView: View {
     @ObservedObject var session: EmailAuthenticationCntroller
-    
     @State private var offset: CGFloat = 0
     @State private var email = ""
     @State private var password = ""
-    @State private var isShowingResetPage = false
+    @State private var presentedPasswordReset = false
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -45,7 +44,7 @@ struct LoginView: View {
                 .font(.largeTitle)
                 .padding(.horizontal, 30)
                 .padding(.top)
-                
+            
             Spacer()
             
             VStack(alignment: .center) {
@@ -74,12 +73,16 @@ struct LoginView: View {
                             onEditingChanged:  { flag in
                                 self.offset = flag ? 170 : 0
                             })
-                            
-                        TextButton(text: "Forgot your password?", action: {
-                            self.isShowingResetPage = true
-                        })
-                        .sheet(isPresented: $isShowingResetPage) {
-                            ResetView(presentedBinding: self.$isShowingResetPage)
+                        
+                        Button(action: { self.presentedPasswordReset = true })
+                        {
+                            Text("Forgot password?")
+                                .foregroundColor(Color.init(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
+                                .bold()
+                                .font(.footnote)
+                        }
+                        .sheet(isPresented: $presentedPasswordReset) {
+                            ResetView(presentedBinding: self.$presentedPasswordReset)
                         }
                     }
                     .padding(.vertical, 8)
