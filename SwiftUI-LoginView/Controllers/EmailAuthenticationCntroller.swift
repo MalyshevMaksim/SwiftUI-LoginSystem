@@ -16,10 +16,14 @@ class EmailAuthenticationCntroller: ObservableObject {
     func initSession() {
         session = Auth.auth().currentUser
         if session != nil && session!.isEmailVerified {
-            self.isLogin = true
+            withAnimation {
+                self.isLogin = true
+            }
         }
         else {
-            self.isLogin = false
+            withAnimation {
+                self.isLogin = false
+            }
         }
     }
     
@@ -33,6 +37,9 @@ class EmailAuthenticationCntroller: ObservableObject {
     
     func logout() {
         try! Auth.auth().signOut()
-        self.isLogin = false
+        
+        withAnimation {
+            self.isLogin = false
+        }
     }
 }

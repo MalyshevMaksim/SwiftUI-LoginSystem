@@ -15,21 +15,32 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            if showingPage {
-                LoginView(session: session)
+            if session.isLogin == true {
+                MainPageView(session: self.session)
                     .animation(.spring())
-                    .transition(AnyTransition.move(edge: .bottom).combined(with: .scale))
+                    .transition(AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top))
+                    .combined(with: .scale))
             }
             else {
-                OnboardingView(presentLoginView: {
-                    withAnimation {
-                        self.showingPage = true
-                    }
-                })
-                    .transition(AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top))
+                if showingPage {
+                    LoginView(session: session)
+                        .animation(.spring())
+                        .transition(AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top))
                         .combined(with: .scale))
+                }
+                else {
+                    OnboardingView(presentLoginView: {
+                        withAnimation {
+                            self.showingPage = true
+                        }
+                    })
+                        .animation(.spring())
+                        .transition(AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top))
+                        .combined(with: .scale))
+                }
             }
         }
+            
         .onAppear {
             self.session.initSession()
         }

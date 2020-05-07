@@ -56,7 +56,7 @@ struct LoginView: View {
                 }
                 
                 VStack {
-                    TextFieldView(string: self.$password,
+                    TextFieldView(string: self.$email,
                         passwordMode: false,
                         placeholder: "Enter your email",
                         iconName: "envelope.fill",
@@ -74,8 +74,7 @@ struct LoginView: View {
                                 self.offset = flag ? 170 : 0
                             })
                         
-                        Button(action: { self.presentedPasswordReset = true })
-                        {
+                        Button(action: { self.presentedPasswordReset = true }) {
                             Text("Forgot password?")
                                 .foregroundColor(Color.init(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
                                 .bold()
