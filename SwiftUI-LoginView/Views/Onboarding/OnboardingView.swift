@@ -27,9 +27,13 @@ struct OnboardingView: View {
                 Spacer()
                 Spacer()
                 
-                FillButton(text: "Get Started", action: {
-                    self.presentLoginView()
-                })
+                Button(action: { self.presentLoginView() }) {
+                    Rectangle()
+                        .fill(Color.init(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
+                        .frame(height: 50, alignment: .center)
+                        .overlay(Text("Get Started").foregroundColor(.white).bold())
+                        .cornerRadius(8)
+                }
                 .frame(width: geometry.size.width * 0.85, height: geometry.size.height * 0.07, alignment: .center)
                 Spacer()
             }

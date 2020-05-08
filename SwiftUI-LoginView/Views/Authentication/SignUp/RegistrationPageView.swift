@@ -89,9 +89,14 @@ struct RegistrationPageView: View {
                 }
                 .padding(.vertical)
                 
-                FillButton(text: "Continue", action: {
-                    self.registration()
-                })
+                Button(action: { self.registration() })
+                {
+                    Rectangle()
+                        .fill(Color.init(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
+                        .frame(height: 50, alignment: .center)
+                        .overlay(Text("Continue").foregroundColor(.white).bold())
+                        .cornerRadius(8)
+                }
                 .alert(isPresented: $showingAlert) {
                     Alert(title: Text("Error!"), message: Text(self.errorMessage!), dismissButton: .destructive(Text("OK")))
                 }

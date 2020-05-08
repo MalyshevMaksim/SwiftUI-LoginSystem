@@ -30,8 +30,13 @@ struct Successful: View {
             
             Spacer()
             
-            FillButton(text: "Continue") {
-                self.presentedBinding = false
+            Button(action: { self.presentedBinding = false })
+            {
+                Rectangle()
+                    .fill(Color.init(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
+                    .frame(height: 50, alignment: .center)
+                    .overlay(Text("Continue").foregroundColor(.white).bold())
+                    .cornerRadius(8)
             }
             .padding(.vertical)
             .padding(.horizontal, 30)

@@ -9,27 +9,6 @@
 import SwiftUI
 import Firebase
 
-func FillButton(text: String, action: @escaping () ->Void) -> some View {
-    return Button(action: { action() })
-    {
-        Rectangle()
-            .fill(Color.init(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
-            .frame(height: 50, alignment: .center)
-            .overlay(Text(text).foregroundColor(.white).bold())
-            .cornerRadius(8)
-    }
-}
-
-func TextButton(text: String, action: @escaping () ->Void) -> some View {
-    return Button(action: { action() })
-    {
-        Text(text)
-            .foregroundColor(Color.init(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
-            .bold()
-            .font(.footnote)
-    }
-}
-
 struct LoginView: View {
     @ObservedObject var session: EmailAuthenticationCntroller
     @State private var offset: CGFloat = 0
@@ -76,7 +55,7 @@ struct LoginView: View {
                         
                         Button(action: { self.presentedPasswordReset = true }) {
                             Text("Forgot password?")
-                                .foregroundColor(Color.init(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
+                                .foregroundColor(Color.blue)
                                 .bold()
                                 .font(.footnote)
                         }

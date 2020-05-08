@@ -25,6 +25,19 @@ struct ResetPasswordView: View {
     
     var presentSuccessfulMessage: (()->()) = {}
     
+    fileprivate func resetPassword() {
+        Auth.auth().sendPasswordReset(withEmail: self.email) { error in
+            if error != nil {
+                self.errorMessage = error?.localizedDescription
+                self.isShowingAlert = true
+                return
+            }
+            
+            UIApplication.shared.endEditing()
+            self.presentSuccessfulMessage()
+        }
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .trailing) {
@@ -67,18 +80,13 @@ struct ResetPasswordView: View {
                                     })
                         .padding(.bottom, 40)
                     
-                    FillButton(text: "Reset Password", action: {
-                        Auth.auth().sendPasswordReset(withEmail: self.email) { error in
-                            if error != nil {
-                                self.errorMessage = error?.localizedDescription
-                                self.isShowingAlert = true
-                                return
-                            }
-                            
-                            UIApplication.shared.endEditing()
-                            self.presentSuccessfulMessage()
-                        }
-                    })
+                    Button(action: { self.resetPassword() }) {
+                        Rectangle()
+                            .fill(Color.init(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
+                            .frame(height: 50, alignment: .center)
+                            .overlay(Text("Reset").foregroundColor(.white).bold())
+                            .cornerRadius(8)
+                    }
                         .alert(isPresented: self.$isShowingAlert) {
                             Alert(title: Text("Error!"),
                                   message: Text(self.errorMessage!),

@@ -39,9 +39,14 @@ struct RegistrationInputPage: View {
                 .padding(.vertical, 8)
             
             Spacer()
-            FillButton(text: "Finish", action: {
-                
-            })
+            Button(action: {  })
+            {
+                Rectangle()
+                    .fill(Color.init(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
+                    .frame(height: 50, alignment: .center)
+                    .overlay(Text("Finish").foregroundColor(.white).bold())
+                    .cornerRadius(8)
+            }
         }
         .padding(.bottom)
         .padding(.horizontal, 30)
