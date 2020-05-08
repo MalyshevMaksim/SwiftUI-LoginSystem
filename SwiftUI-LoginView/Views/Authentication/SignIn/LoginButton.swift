@@ -43,7 +43,7 @@ struct LoginButtons: View {
             }
             
             UIApplication.shared.endEditing()
-            self.session.initSession()
+            self.session.initialSession()
         }
     }
     

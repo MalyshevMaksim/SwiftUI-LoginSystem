@@ -13,7 +13,7 @@ class EmailAuthenticationCntroller: ObservableObject {
     @Published var isLogin: Bool?
     @Published var session: User?
     
-    func initSession() {
+    func initialSession() {
         session = Auth.auth().currentUser
         if session != nil && session!.isEmailVerified {
             withAnimation {

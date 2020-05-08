@@ -232,6 +232,7 @@
 				B5A683A324474E8E00892E03 /* Frameworks */,
 				B5A683A424474E8E00892E03 /* Resources */,
 				A87AF42975CC520F84B14B29 /* [CP] Embed Pods Frameworks */,
+				2D118952A0334CE79A8C7E35 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -290,6 +291,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2D118952A0334CE79A8C7E35 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftUI-LoginView/Pods-SwiftUI-LoginView-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftUI-LoginView/Pods-SwiftUI-LoginView-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftUI-LoginView/Pods-SwiftUI-LoginView-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A87AF42975CC520F84B14B29 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

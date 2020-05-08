@@ -34,8 +34,7 @@ struct MainPageView: View {
             }
             
             Spacer()
-            Button(action: { self.isSignOutPresented = true })
-            {
+            Button(action: { self.isSignOutPresented = true }) {
                 Rectangle()
                     .fill(Color.init(#colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)))
                     .frame(width: 320, height: 50, alignment: .center)

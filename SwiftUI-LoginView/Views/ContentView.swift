@@ -11,10 +11,13 @@ import Firebase
 
 struct ContentView: View {
     @ObservedObject var session = EmailAuthenticationCntroller()
-    @State var showingPage = false
+    @State var presentedLoginPage = false
+    private let initialLaunchKey = "isInitialLoginLaunch"
     
     var body: some View {
         ZStack {
+            
+            // Give access to the main page of the application, if the user is logged in
             if session.isLogin == true {
                 MainPageView(session: self.session)
                     .animation(.spring())
@@ -22,7 +25,8 @@ struct ContentView: View {
                     .combined(with: .scale))
             }
             else {
-                if showingPage {
+                // Did not show the onboarding screen if it has already been viewed
+                if presentedLoginPage || UserDefaults.standard.bool(forKey: "isInitialLoginLaunch") {
                     LoginView(session: session)
                         .animation(.spring())
                         .transition(AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top))
@@ -30,8 +34,11 @@ struct ContentView: View {
                 }
                 else {
                     OnboardingView(presentLoginView: {
+                        // Remember that the onboarding screen has already been viewed
+                        UserDefaults.standard.set(true, forKey: self.initialLaunchKey)
+                        
                         withAnimation {
-                            self.showingPage = true
+                            self.presentedLoginPage = true
                         }
                     })
                         .animation(.spring())
@@ -40,9 +47,9 @@ struct ContentView: View {
                 }
             }
         }
-            
+        // Get the session object when entering the application
         .onAppear {
-            self.session.initSession()
+            self.session.initialSession()
         }
     }
 }
