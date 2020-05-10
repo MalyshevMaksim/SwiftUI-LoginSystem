@@ -16,7 +16,6 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            
             // Give access to the main page of the application, if the user is logged in
             if session.isLogin == true {
                 MainPageView(session: self.session)

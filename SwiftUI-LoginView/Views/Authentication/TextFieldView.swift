@@ -14,7 +14,6 @@ struct TextFieldView: View {
     var passwordMode = false
     var placeholder: String
     var iconName: String
-    var onEditingChanged: ((Bool)->()) = { _ in }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -26,14 +25,10 @@ struct TextFieldView: View {
                     .padding(.leading, 20)
                 
                 if passwordMode {
-                    SecureField(placeholder, text: $string, onCommit: {
-                        self.onEditingChanged(false)
-                    })
+                    SecureField(placeholder, text: $string)
                 }
                 else {
-                    TextField(placeholder, text: $string, onEditingChanged: { flag in
-                        self.onEditingChanged(flag)
-                    })
+                    TextField(placeholder, text: $string)
                 }
             }
         }

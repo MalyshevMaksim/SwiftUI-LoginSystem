@@ -12,6 +12,7 @@
 		B526833B244BC84A001E2A3F /* EmailAuthenticationCntroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B526833A244BC84A001E2A3F /* EmailAuthenticationCntroller.swift */; };
 		B5288C27245868C5003DB81A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5288C26245868C5003DB81A /* ResetPasswordView.swift */; };
 		B5288C292458AEBF003DB81A /* ResetSuccessful.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5288C282458AEBE003DB81A /* ResetSuccessful.swift */; };
+		B54140392467BBB5000CAB39 /* KeyboardHeightPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54140382467BBB5000CAB39 /* KeyboardHeightPublisher.swift */; };
 		B54739E52458324F00DD687C /* RegistrationInputPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54739E42458324F00DD687C /* RegistrationInputPage.swift */; };
 		B557014D245178AD00E9EB51 /* LoginFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B557014C245178AD00E9EB51 /* LoginFooterView.swift */; };
 		B5A683AA24474E8E00892E03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A683A924474E8E00892E03 /* AppDelegate.swift */; };
@@ -30,6 +31,8 @@
 		B5ABD345244A6A9300C6A4F0 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD344244A6A9300C6A4F0 /* TextFieldView.swift */; };
 		B5BAD36F2452C70500FF45C7 /* MainPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BAD36E2452C70500FF45C7 /* MainPageView.swift */; };
 		B5D2DF61245A35F000843336 /* ResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D2DF60245A35F000843336 /* ResetView.swift */; };
+		B5E395C32467C17400C73A94 /* KeyboardAdaptive.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E395C22467C17400C73A94 /* KeyboardAdaptive.swift */; };
+		B5E395C52467C60500C73A94 /* UIResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E395C42467C60500C73A94 /* UIResponder.swift */; };
 		B5F61EA1244BAA6400FEE0EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5F61EA0244BAA6400FEE0EB /* GoogleService-Info.plist */; };
 		B5F69382244F7C8600A4CCD5 /* RegistrationPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F69381244F7C8600A4CCD5 /* RegistrationPageView.swift */; };
 		B5F8B953244C926D00A453A6 /* OnboardingPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8B952244C926D00A453A6 /* OnboardingPageModel.swift */; };
@@ -42,6 +45,7 @@
 		B526833A244BC84A001E2A3F /* EmailAuthenticationCntroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthenticationCntroller.swift; sourceTree = "<group>"; };
 		B5288C26245868C5003DB81A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		B5288C282458AEBE003DB81A /* ResetSuccessful.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetSuccessful.swift; sourceTree = "<group>"; };
+		B54140382467BBB5000CAB39 /* KeyboardHeightPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHeightPublisher.swift; sourceTree = "<group>"; };
 		B54739E42458324F00DD687C /* RegistrationInputPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationInputPage.swift; sourceTree = "<group>"; };
 		B557014C245178AD00E9EB51 /* LoginFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFooterView.swift; sourceTree = "<group>"; };
 		B5A683A624474E8E00892E03 /* SwiftUI-LoginView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI-LoginView.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +66,8 @@
 		B5ABD344244A6A9300C6A4F0 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		B5BAD36E2452C70500FF45C7 /* MainPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageView.swift; sourceTree = "<group>"; };
 		B5D2DF60245A35F000843336 /* ResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetView.swift; sourceTree = "<group>"; };
+		B5E395C22467C17400C73A94 /* KeyboardAdaptive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAdaptive.swift; sourceTree = "<group>"; };
+		B5E395C42467C60500C73A94 /* UIResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIResponder.swift; sourceTree = "<group>"; };
 		B5F61EA0244BAA6400FEE0EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B5F69381244F7C8600A4CCD5 /* RegistrationPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPageView.swift; sourceTree = "<group>"; };
 		B5F8B952244C926D00A453A6 /* OnboardingPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageModel.swift; sourceTree = "<group>"; };
@@ -136,6 +142,16 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		B54140372467BB6E000CAB39 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B54140382467BBB5000CAB39 /* KeyboardHeightPublisher.swift */,
+				B5E395C22467C17400C73A94 /* KeyboardAdaptive.swift */,
+				B5E395C42467C60500C73A94 /* UIResponder.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B5A6839D24474E8E00892E03 = {
 			isa = PBXGroup;
 			children = (
@@ -160,8 +176,9 @@
 				B526833E244C86FC001E2A3F /* Controllers */,
 				B526833D244C86B5001E2A3F /* Models */,
 				B526833C244C8674001E2A3F /* Views */,
-				B5A683AB24474E8E00892E03 /* SceneDelegate.swift */,
+				B54140372467BB6E000CAB39 /* Extensions */,
 				B5A683A924474E8E00892E03 /* AppDelegate.swift */,
+				B5A683AB24474E8E00892E03 /* SceneDelegate.swift */,
 				B5A683AF24474E9000892E03 /* Assets.xcassets */,
 				B5A683B424474E9000892E03 /* LaunchScreen.storyboard */,
 				B5F61EA0244BAA6400FEE0EB /* GoogleService-Info.plist */,
@@ -358,6 +375,7 @@
 				B5A683C42447BBB400892E03 /* PageControl.swift in Sources */,
 				B5A683AA24474E8E00892E03 /* AppDelegate.swift in Sources */,
 				B5A683AC24474E8E00892E03 /* SceneDelegate.swift in Sources */,
+				B5E395C52467C60500C73A94 /* UIResponder.swift in Sources */,
 				B5A683C22447725800892E03 /* OnboardingListView.swift in Sources */,
 				B5A683AE24474E8E00892E03 /* ContentView.swift in Sources */,
 				B5288C27245868C5003DB81A /* ResetPasswordView.swift in Sources */,
@@ -366,11 +384,13 @@
 				B5ABD32F244894C700C6A4F0 /* OnboardingDetailView.swift in Sources */,
 				B5ABD3312448E12B00C6A4F0 /* OnboardingView.swift in Sources */,
 				B526833B244BC84A001E2A3F /* EmailAuthenticationCntroller.swift in Sources */,
+				B54140392467BBB5000CAB39 /* KeyboardHeightPublisher.swift in Sources */,
 				B5ABD345244A6A9300C6A4F0 /* TextFieldView.swift in Sources */,
 				B5F8B953244C926D00A453A6 /* OnboardingPageModel.swift in Sources */,
 				B54739E52458324F00DD687C /* RegistrationInputPage.swift in Sources */,
 				B5D2DF61245A35F000843336 /* ResetView.swift in Sources */,
 				B5ABD3372448FD4900C6A4F0 /* LoginView.swift in Sources */,
+				B5E395C32467C17400C73A94 /* KeyboardAdaptive.swift in Sources */,
 				B521687D2455431E00018F73 /* LoginButton.swift in Sources */,
 				B5A683BE2447504700892E03 /* PageViewController.swift in Sources */,
 				B5288C292458AEBF003DB81A /* ResetSuccessful.swift in Sources */,

@@ -8,10 +8,10 @@
 
 import SwiftUI
 import Firebase
+import Combine
 
 struct LoginView: View {
     @ObservedObject var session: EmailAuthenticationCntroller
-    @State private var offset: CGFloat = 0
     @State private var email = ""
     @State private var password = ""
     @State private var presentedPasswordReset = false
@@ -25,33 +25,24 @@ struct LoginView: View {
                 .padding(.top)
             
             Spacer()
-            
             VStack(alignment: .center) {
-                if offset == 0 {
-                    Image("asset1")
-                        .resizable()
-                        .scaledToFit()
-                        .padding()
-                }
+                Image("asset1")
+                    .resizable()
+                    .scaledToFit()
+                    .padding()
                 
                 VStack {
                     TextFieldView(string: self.$email,
                         passwordMode: false,
                         placeholder: "Enter your email",
-                        iconName: "envelope.fill",
-                        onEditingChanged:  { flag in
-                            self.offset = flag ? 170 : 0
-                        })
+                        iconName: "envelope.fill")
                         .padding(.vertical, 8)
                         
                     VStack(alignment: .trailing) {
                         TextFieldView(string: self.$password,
                             passwordMode: true,
                             placeholder: "Enter your password",
-                            iconName: "lock.open.fill",
-                            onEditingChanged:  { flag in
-                                self.offset = flag ? 170 : 0
-                            })
+                            iconName: "lock.open.fill")
                         
                         Button(action: { self.presentedPasswordReset = true }) {
                             Text("Forgot password?")
@@ -70,7 +61,7 @@ struct LoginView: View {
                     bindEmail: $email,
                     bindPassword: $password)
             }
-            .offset(y: -offset)
+            .keyboardAdaptive()
             .padding(.bottom)
             .padding(.horizontal, 30)
             

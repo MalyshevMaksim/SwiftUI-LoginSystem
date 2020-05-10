@@ -9,18 +9,10 @@
 import SwiftUI
 import Firebase
 
-extension UIApplication {
-    func endEditing() {
-        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
-
 struct ResetPasswordView: View {
     @State private var email = ""
     @State private var isShowingAlert = false
     @State private var errorMessage: String?
-    
-    @State var offset: CGFloat = 0
     @Binding var presentedBinding: Bool
     
     var presentSuccessfulMessage: (()->()) = {}
@@ -49,12 +41,10 @@ struct ResetPasswordView: View {
                 VStack {
                     Spacer()
                     
-                    if self.offset == 0 {
-                        Image("reset")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: geometry.size.height * 0.35, alignment: .center)
-                    }
+                    Image("reset")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: geometry.size.height * 0.35, alignment: .center)
                     
                     Spacer()
                     
@@ -72,12 +62,7 @@ struct ResetPasswordView: View {
                     TextFieldView(string: self.$email,
                                   passwordMode: false,
                                   placeholder: "Enter your email",
-                                  iconName: "envelope.fill",
-                                  onEditingChanged:  { flag in
-                                    withAnimation(.spring()) {
-                                        self.offset = flag ? 270 : 0
-                                    }
-                                    })
+                                  iconName: "envelope.fill")
                         .padding(.bottom, 40)
                     
                     Button(action: { self.resetPassword() }) {
@@ -94,8 +79,8 @@ struct ResetPasswordView: View {
                         }
                     .padding(.bottom)
                 }
+                .keyboardAdaptive()
                 .padding(.horizontal, 30)
-                .offset(y: -self.offset)
             }
         }
     }

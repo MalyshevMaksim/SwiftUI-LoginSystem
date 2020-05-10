@@ -12,7 +12,6 @@ import Firebase
 struct RegistrationPageView: View {
     @Binding var presentedBinding: Bool
     @ObservedObject var session: EmailAuthenticationCntroller
-    @State private var offset: CGFloat = 0
     
     @State private var email = ""
     @State private var password = ""
@@ -21,7 +20,7 @@ struct RegistrationPageView: View {
     @State private var errorMessage: String?
     @State private var showingAlert = false
     
-    func registration() {
+    fileprivate func registration() {
         if password != confirmPassword {
             self.errorMessage = "Password mismatch!"
             self.showingAlert = true
@@ -45,11 +44,9 @@ struct RegistrationPageView: View {
     var body: some View {
         NavigationView {
             VStack {
-                if offset == 0 {
-                    Image("asset2")
-                        .resizable()
-                        .scaledToFit()
-                }
+                Image("asset2")
+                    .resizable()
+                    .scaledToFit()
                 
                 Spacer()
                 
@@ -57,34 +54,19 @@ struct RegistrationPageView: View {
                    TextFieldView(string: $email,
                                  passwordMode: false,
                                  placeholder: "Enter your email",
-                                 iconName: "envelope.fill",
-                                 onEditingChanged: { flag in
-                                    withAnimation(.spring()) {
-                                        self.offset = flag ? 210 : 0
-                                    }
-                                 })
+                                 iconName: "envelope.fill")
                         .padding(.vertical, 8)
                     
                     TextFieldView(string: $password,
                                   passwordMode: true,
                                   placeholder: "Enter your password",
-                                  iconName: "lock.open.fill",
-                                  onEditingChanged: { flag in
-                                    withAnimation(.spring()) {
-                                        self.offset = flag ? 210 : 0
-                                    }
-                                  })
+                                  iconName: "lock.open.fill")
                         .padding(.vertical, 8)
                     
                     TextFieldView(string: $confirmPassword,
                                   passwordMode: true,
                                   placeholder: "Confirm your password",
-                                  iconName: "repeat",
-                                  onEditingChanged: { flag in
-                                    withAnimation(.spring()) {
-                                        self.offset = flag ? 210 : 0
-                                    }
-                                  })
+                                  iconName: "repeat")
                         .padding(.vertical, 8)
                 }
                 .padding(.vertical)
@@ -101,9 +83,8 @@ struct RegistrationPageView: View {
                     Alert(title: Text("Error!"), message: Text(self.errorMessage!), dismissButton: .destructive(Text("OK")))
                 }
             }
-            .offset(y: -offset)
+            .keyboardAdaptive()
             .padding(.horizontal, 30)
-            .navigationBarTitle(offset == 0 ? "Create account" : "")
             .navigationBarItems(trailing: Button("Cancel") {
                 self.presentedBinding = false
             })
