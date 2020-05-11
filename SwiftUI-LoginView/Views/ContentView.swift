@@ -14,6 +14,11 @@ struct ContentView: View {
     @State var presentedLoginPage = false
     private let initialLaunchKey = "isInitialLoginLaunch"
     
+    init() {
+        // Get the session object when entering the application
+        self.session.initialSession()
+    }
+    
     var body: some View {
         ZStack {
             // Give access to the main page of the application, if the user is logged in
@@ -45,10 +50,6 @@ struct ContentView: View {
                         .combined(with: .scale))
                 }
             }
-        }
-        // Get the session object when entering the application
-        .onAppear {
-            self.session.initialSession()
         }
     }
 }

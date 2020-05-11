@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct OnboardingPageView: View {
-    @State private var isPagePresented = false
-    @State private var isDetailPresented = false
+    @State private var presentedPage = false
+    @State private var presentedDetail = false
     let pageData: OnboardingPageModel
     
     var pageTransition: AnyTransition {
@@ -28,7 +28,7 @@ struct OnboardingPageView: View {
                 .frame(width: 90, height: 90, alignment: .center)
                 .padding()
             
-            if isPagePresented {
+            if presentedPage {
                 Text(pageData.headerText)
                     .bold()
                     .frame(width: 300)
@@ -37,7 +37,7 @@ struct OnboardingPageView: View {
                     .transition(pageTransition)
             }
             
-            if isPagePresented {
+            if presentedPage {
                 Text(pageData.description)
                     .foregroundColor(.secondary)
                     .font(.footnote)
@@ -48,20 +48,20 @@ struct OnboardingPageView: View {
                     .transition(pageTransition)
             }
             
-            Button(action: { self.isDetailPresented = true }) {
+            Button(action: { self.presentedDetail = true }) {
                 Text("Show more info")
                     
             }
-            .sheet(isPresented: $isDetailPresented, content: {
+            .sheet(isPresented: $presentedDetail, content: {
                 OnboardingDetailView()
             })
             .padding()
         }
         .onAppear {
-            self.isPagePresented = true
+            self.presentedPage = true
         }
         .onDisappear {
-            self.isPagePresented = false
+            self.presentedPage = false
         }
         .animation(.spring())
         .transition(pageTransition)

@@ -12,36 +12,44 @@ import Firebase
 struct LoginButtons: View {
     @ObservedObject var session: EmailAuthenticationCntroller
     
+    // The states depending on which a specific alert will be shown
+    enum alertState {
+        case standartError
+        case verifivationError
+    }
+    
     @Binding var bindEmail: String
     @Binding var bindPassword:String
     
     @State private var errorMesssage: String?
-    @State private var showingAlert = false
-    @State private var showingSignUpPage = false
+    @State private var presentedAlert = false
+    @State private var presentedSignUpPage = false
     
-    @State private var alert: alertState = .standartMessage
-    
-    enum alertState {
-        case standartMessage
-        case verifivationError
-    }
+    @State private var alert: alertState = .standartError
     
     fileprivate func login() {
+       // Attempt to login
        session.login(email: bindEmail, password: bindPassword) { user, error in
             if error != nil {
+                // If an error occurred while logging into the system, then display its message in alert
                 self.errorMesssage = error?.localizedDescription
-                self.alert = .standartMessage
-                self.showingAlert = true
+                self.alert = .standartError
+                self.presentedAlert = true
                 return
             }
         
+            /* If the user correctly entered their data, but has not yet been verified,
+               then we display the corresponding message */
             if !Auth.auth().currentUser!.isEmailVerified {
                 self.errorMesssage = "Your account has been created but not verified. Confirm registration by your email."
+                
+                // Change the state of Alert with the ability to send letters
                 self.alert = .verifivationError
-                self.showingAlert = true
+                self.presentedAlert = true
                 return
             }
             
+            // If the user has been verified, then initialize the session object
             UIApplication.shared.endEditing()
             self.session.initialSession()
         }
@@ -56,12 +64,13 @@ struct LoginButtons: View {
                     .overlay(Text("Sign In").foregroundColor(.white).bold())
                     .cornerRadius(8)
             }
-            .alert(isPresented: $showingAlert) {
+            .alert(isPresented: $presentedAlert) {
                 if alert == alertState.verifivationError {
                     return Alert(title: Text("Error!"),
                           message: Text(errorMesssage!),
                           primaryButton: .cancel(),
                           secondaryButton: .default(Text("Send email again"), action: {
+                                // Resend verification email
                                 Auth.auth().currentUser?.sendEmailVerification(completion: nil)
                           })
                     )
@@ -77,14 +86,14 @@ struct LoginButtons: View {
                 Text("No account?")
                     .font(.footnote)
                     .foregroundColor(.secondary)
-                Button(action: { self.showingSignUpPage = true }) {
+                Button(action: { self.presentedSignUpPage = true }) {
                     Text("Sign Up")
                         .foregroundColor(.blue)
                         .bold()
                         .font(.footnote)
                 }
-                .sheet(isPresented: self.$showingSignUpPage) {
-                    RegistrationPageView(presentedBinding: self.$showingSignUpPage, session: self.session)
+                .sheet(isPresented: self.$presentedSignUpPage) {
+                    RegistrationPageView(presentedBinding: self.$presentedSignUpPage, session: self.session)
                 }
             }
         }

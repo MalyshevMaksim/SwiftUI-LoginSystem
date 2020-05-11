@@ -18,21 +18,25 @@ struct RegistrationPageView: View {
     @State private var confirmPassword = ""
     
     @State private var errorMessage: String?
-    @State private var showingAlert = false
+    @State private var presentedAlert = false
     
     fileprivate func registration() {
         if password != confirmPassword {
             self.errorMessage = "Password mismatch!"
-            self.showingAlert = true
+            self.presentedAlert = true
             return
         }
+        
+        // Attempt to create account
         session.createAccount(email: email, password: password) { user, error in
+            // If an error occurred while logging into the system, then display its message in alert
             if error != nil {
                 self.errorMessage = error?.localizedDescription
-                self.showingAlert = true
+                self.presentedAlert = true
                 return
             }
             
+            // Send an email to confirm the user
             Auth.auth().currentUser?.sendEmailVerification(completion: { error in
                 
             })
@@ -79,7 +83,7 @@ struct RegistrationPageView: View {
                         .overlay(Text("Continue").foregroundColor(.white).bold())
                         .cornerRadius(8)
                 }
-                .alert(isPresented: $showingAlert) {
+                .alert(isPresented: $presentedAlert) {
                     Alert(title: Text("Error!"), message: Text(self.errorMessage!), dismissButton: .destructive(Text("OK")))
                 }
             }
