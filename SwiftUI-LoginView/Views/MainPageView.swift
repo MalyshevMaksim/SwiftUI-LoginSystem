@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct MainPageView: View {
-    @ObservedObject var session: EmailAuthenticationCntroller
     @State private var isSignOutPresented = false
     
     var body: some View {
@@ -48,7 +47,7 @@ struct MainPageView: View {
                 ActionSheet(title: Text("Warning"),
                             message: Text("Are you sure you want to sign out?"),
                             buttons: [.cancel(),.destructive(Text("Sign out"),
-                            action: { self.session.logout() })])
+                            action: { session.logout() })])
             }
             .padding()
         }
@@ -57,6 +56,6 @@ struct MainPageView: View {
 
 struct MainPageView_Previews: PreviewProvider {
     static var previews: some View {
-        MainPageView(session: EmailAuthenticationCntroller())
+        MainPageView()
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import GoogleSignIn
 
 struct LoginFooterView: View {
     
@@ -43,7 +44,7 @@ struct LoginFooterView: View {
             }
                 .padding(.vertical, 5)
             HStack {
-                createButton(title: "Google", imageName: "google")
+                GoogleSignInButton()
                     .frame(height: 45, alignment: .center)
                     .buttonStyle(PlainButtonStyle())
                 createButton(title: "Apple", imageName: "apple")
@@ -51,6 +52,19 @@ struct LoginFooterView: View {
                     .buttonStyle(PlainButtonStyle())
             }
         }
+    }
+}
+
+struct GoogleSignInButton: UIViewRepresentable {
+    func makeUIView(context: Context) -> GIDSignInButton {
+        let button = GIDSignInButton()
+        button.colorScheme = .dark
+        GIDSignIn.sharedInstance()?.presentingViewController = UIApplication.shared.windows.last?.rootViewController
+        return button
+    }
+        
+    func updateUIView(_ uiView: GIDSignInButton, context: UIViewRepresentableContext<GoogleSignInButton>) {
+        
     }
 }
 

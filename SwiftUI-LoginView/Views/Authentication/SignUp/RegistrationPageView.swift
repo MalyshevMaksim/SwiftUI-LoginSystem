@@ -11,7 +11,6 @@ import Firebase
 
 struct RegistrationPageView: View {
     @Binding var presentedBinding: Bool
-    @ObservedObject var session: EmailAuthenticationCntroller
     
     @State private var email = ""
     @State private var password = ""
@@ -102,6 +101,6 @@ struct RegistrationPageView_Previews: PreviewProvider {
     @State static var previewPresented = false
     @ObservedObject static var session = EmailAuthenticationCntroller()
     static var previews: some View {
-        RegistrationPageView(presentedBinding: $previewPresented, session: self.session)
+        RegistrationPageView(presentedBinding: $previewPresented)
     }
 }

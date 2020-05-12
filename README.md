@@ -24,3 +24,7 @@ Onboarding            |  Sign in page     | Sign up page
 Error message            |  Reset password     | Successful reset password 
 :-------------------------:|:-------------------------:|:-------------------------:
 <img src="https://i.ibb.co/7R13D43/Error-Message.png" height="500"> |  <img src="https://i.ibb.co/5rtvTHv/Forgot-Password.png" height="500"> | <img src="https://i.ibb.co/wp7GRZZ/Successssful.png" height="500">
+
+Sign in with Google
+:-------------------------:
+<img src="https://i.ibb.co/yV31bdd/with-Google.png" height="500"> 

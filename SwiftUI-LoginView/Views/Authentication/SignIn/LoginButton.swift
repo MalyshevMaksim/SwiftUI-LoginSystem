@@ -10,8 +10,6 @@ import SwiftUI
 import Firebase
 
 struct LoginButtons: View {
-    @ObservedObject var session: EmailAuthenticationCntroller
-    
     // The states depending on which a specific alert will be shown
     enum alertState {
         case standartError
@@ -51,7 +49,7 @@ struct LoginButtons: View {
             
             // If the user has been verified, then initialize the session object
             UIApplication.shared.endEditing()
-            self.session.initialSession()
+            session.initialSession()
         }
     }
     
@@ -93,7 +91,7 @@ struct LoginButtons: View {
                         .font(.footnote)
                 }
                 .sheet(isPresented: self.$presentedSignUpPage) {
-                    RegistrationPageView(presentedBinding: self.$presentedSignUpPage, session: self.session)
+                    RegistrationPageView(presentedBinding: self.$presentedSignUpPage)
                 }
             }
         }
@@ -103,8 +101,7 @@ struct LoginButtons: View {
 struct LoginButtons_Previews: PreviewProvider {
     @State static var email = ""
     @State static var password = ""
-    @ObservedObject static var session = EmailAuthenticationCntroller()
     static var previews: some View {
-        LoginButtons(session: session, bindEmail: $email, bindPassword: $password)
+        LoginButtons(bindEmail: $email, bindPassword: $password)
     }
 }
