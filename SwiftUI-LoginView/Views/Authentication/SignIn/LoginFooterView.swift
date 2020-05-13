@@ -8,6 +8,7 @@
 
 import SwiftUI
 import GoogleSignIn
+import AuthenticationServices
 
 struct LoginFooterView: View {
     
@@ -47,11 +48,20 @@ struct LoginFooterView: View {
                 GoogleSignInButton()
                     .frame(height: 45, alignment: .center)
                     .buttonStyle(PlainButtonStyle())
-                createButton(title: "Apple", imageName: "apple")
-                    .frame(height: 45, alignment: .center)
+                SignInWithAppleButton()
+                    .frame(height: 42, alignment: .center)
                     .buttonStyle(PlainButtonStyle())
             }
         }
+    }
+}
+
+struct SignInWithAppleButton: UIViewRepresentable {
+    func makeUIView(context: Context) -> ASAuthorizationAppleIDButton {
+        return ASAuthorizationAppleIDButton(type: .signIn, style: .black)
+    }
+    
+    func updateUIView(_ uiView: ASAuthorizationAppleIDButton, context: Context) {
     }
 }
 

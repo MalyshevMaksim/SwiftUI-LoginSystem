@@ -10,6 +10,7 @@ import SwiftUI
 import Firebase
 
 struct ContentView: View {
+    @ObservedObject var session = EmailAuthenticationCntroller()
     @State var presentedLoginPage = false
     private let initialLaunchKey = "isInitialLoginLaunch"
     
@@ -22,7 +23,7 @@ struct ContentView: View {
         ZStack {
             // Give access to the main page of the application, if the user is logged in
             if session.isLogin == true {
-                MainPageView()
+                MainPageView(session: session)
                     .animation(.spring())
                     .transition(AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top))
                     .combined(with: .scale))
@@ -30,7 +31,7 @@ struct ContentView: View {
             else {
                 // Did not show the onboarding screen if it has already been viewed
                 if presentedLoginPage || UserDefaults.standard.bool(forKey: "isInitialLoginLaunch") {
-                    LoginView()
+                    LoginView(session: session)
                         .animation(.spring())
                         .transition(AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top))
                         .combined(with: .scale))

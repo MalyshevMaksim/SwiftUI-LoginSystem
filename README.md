@@ -19,12 +19,13 @@ A training project on implementing an authentication system using Google Firebas
 
 Onboarding            |  Sign in page     | Sign up page   
 :-------------------------:|:-------------------------:|:-------------------------:
-<img src="https://i.ibb.co/KXDgyNQ/Onboarding.png" height="500"> |  <img src="https://i.ibb.co/0fPNrhC/Login.png" height="500"> | <img src="https://i.ibb.co/kSXJ3q1/Registration.png" height="500">
+<img src="https://i.ibb.co/KXDgyNQ/Onboarding.png" height="500"> |  <img src="https://i.ibb.co/wsPbf9w/Login.png" height="500"> | <img src="https://i.ibb.co/kSXJ3q1/Registration.png" height="500">
 
-Error message            |  Reset password     | Successful reset password 
+Sign in with Google            |  Reset password     | Successful reset password 
 :-------------------------:|:-------------------------:|:-------------------------:
-<img src="https://i.ibb.co/7R13D43/Error-Message.png" height="500"> |  <img src="https://i.ibb.co/5rtvTHv/Forgot-Password.png" height="500"> | <img src="https://i.ibb.co/wp7GRZZ/Successssful.png" height="500">
+<img src="https://i.ibb.co/yV31bdd/with-Google.png" height="500"> |  <img src="https://i.ibb.co/5rtvTHv/Forgot-Password.png" height="500"> | <img src="https://i.ibb.co/wp7GRZZ/Successssful.png" height="500">
 
-Sign in with Google
+Errow message
 :-------------------------:
-<img src="https://i.ibb.co/yV31bdd/with-Google.png" height="500"> 
+<img src="https://i.ibb.co/7R13D43/Error-Message.png" height="500"> 
+

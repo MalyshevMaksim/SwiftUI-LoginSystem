@@ -10,6 +10,7 @@ import SwiftUI
 import Firebase
 
 struct RegistrationPageView: View {
+    @ObservedObject var session: EmailAuthenticationCntroller
     @Binding var presentedBinding: Bool
     
     @State private var email = ""
@@ -101,6 +102,6 @@ struct RegistrationPageView_Previews: PreviewProvider {
     @State static var previewPresented = false
     @ObservedObject static var session = EmailAuthenticationCntroller()
     static var previews: some View {
-        RegistrationPageView(presentedBinding: $previewPresented)
+        RegistrationPageView(session: EmailAuthenticationCntroller(), presentedBinding: $previewPresented)
     }
 }

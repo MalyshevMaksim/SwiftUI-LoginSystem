@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             if error != nil {
                 return
             }
-            session.initialSession()
+            //session.initialSession()
         }
     }
     

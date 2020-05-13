@@ -11,6 +11,7 @@ import Firebase
 import Combine
 
 struct LoginView: View {
+    @ObservedObject var session: EmailAuthenticationCntroller
     @State private var email = ""
     @State private var password = ""
     @State private var presentedPasswordReset = false
@@ -56,9 +57,9 @@ struct LoginView: View {
                     .padding(.vertical, 8)
                 }
                 
-                LoginButtons(
-                    bindEmail: $email,
-                    bindPassword: $password)
+                LoginButtons(session: session,
+                             bindEmail: $email,
+                             bindPassword: $password)
             }
             .keyboardAdaptive()
             .padding(.bottom)
@@ -73,6 +74,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(session: EmailAuthenticationCntroller())
     }
 }

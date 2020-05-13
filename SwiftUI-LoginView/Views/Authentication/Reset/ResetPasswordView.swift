@@ -11,7 +11,7 @@ import Firebase
 
 struct ResetPasswordView: View {
     @State private var email = ""
-    @State private var isShowingAlert = false
+    @State private var presentedAlert = false
     @State private var errorMessage: String?
     @Binding var presentedBinding: Bool
     
@@ -21,7 +21,7 @@ struct ResetPasswordView: View {
         Auth.auth().sendPasswordReset(withEmail: self.email) { error in
             if error != nil {
                 self.errorMessage = error?.localizedDescription
-                self.isShowingAlert = true
+                self.presentedAlert = true
                 return
             }
             
@@ -72,7 +72,7 @@ struct ResetPasswordView: View {
                             .overlay(Text("Reset").foregroundColor(.white).bold())
                             .cornerRadius(8)
                     }
-                        .alert(isPresented: self.$isShowingAlert) {
+                        .alert(isPresented: self.$presentedAlert) {
                             Alert(title: Text("Error!"),
                                   message: Text(self.errorMessage!),
                                   dismissButton: .destructive(Text("OK")))

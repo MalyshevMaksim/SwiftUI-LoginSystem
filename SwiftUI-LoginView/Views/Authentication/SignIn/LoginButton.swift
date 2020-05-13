@@ -16,6 +16,7 @@ struct LoginButtons: View {
         case verifivationError
     }
     
+    @ObservedObject var session: EmailAuthenticationCntroller
     @Binding var bindEmail: String
     @Binding var bindPassword:String
     
@@ -49,7 +50,7 @@ struct LoginButtons: View {
             
             // If the user has been verified, then initialize the session object
             UIApplication.shared.endEditing()
-            session.initialSession()
+            self.session.initialSession()
         }
     }
     
@@ -91,7 +92,7 @@ struct LoginButtons: View {
                         .font(.footnote)
                 }
                 .sheet(isPresented: self.$presentedSignUpPage) {
-                    RegistrationPageView(presentedBinding: self.$presentedSignUpPage)
+                    RegistrationPageView(session: self.session, presentedBinding: self.$presentedSignUpPage)
                 }
             }
         }
@@ -102,6 +103,6 @@ struct LoginButtons_Previews: PreviewProvider {
     @State static var email = ""
     @State static var password = ""
     static var previews: some View {
-        LoginButtons(bindEmail: $email, bindPassword: $password)
+        LoginButtons(session: EmailAuthenticationCntroller(), bindEmail: $email, bindPassword: $password)
     }
 }

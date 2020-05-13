@@ -9,8 +9,6 @@
 import Firebase
 import SwiftUI
 
-var session = EmailAuthenticationCntroller()
-
 class EmailAuthenticationCntroller: ObservableObject {
     @Published var isLogin: Bool?
     @Published var session: User?
