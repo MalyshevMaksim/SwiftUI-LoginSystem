@@ -10,11 +10,12 @@ import Firebase
 import SwiftUI
 
 class SessionCntroller: ObservableObject {
-    @Published var isLogin: Bool?
+    @Published private var isLogin: Bool?
     @Published var session: User?
     
     func initialSession() {
         session = Auth.auth().currentUser
+        
         if session != nil && session!.isEmailVerified {
             withAnimation {
                 self.isLogin = true

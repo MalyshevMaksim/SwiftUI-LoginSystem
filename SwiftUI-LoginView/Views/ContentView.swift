@@ -12,40 +12,47 @@ import Firebase
 struct ContentView: View {
     @ObservedObject var userSession = SessionCntroller()
     @State private var isLoginPagePresented = false
-    private let launchKeyForOnboarding = "isOnboardingWasSkipped"
+    private let isOnboardingWasSkipped = "isOnboardingWasSkipped"
     
     init() {
-        // Get the session object when entering the application
         userSession.initialSession()
     }
     
     var body: some View {
         ZStack {
-            // Give access to the main page of the application, if the user is logged in
             if userSession.isValid() {
-                MainPageView(session: userSession).modifier(PageModifier())
+                MainPageView(session: userSession).modifier(ScreenModifier())
             }
             else {
-                // Did not show the onboarding screen if it has already been viewed
-                if isLoginPagePresented || UserDefaults.standard.bool(forKey: launchKeyForOnboarding) {
-                    LoginView(session: userSession).modifier(PageModifier())
+                if isOnboardingAlreadyShowing() {
+                    LoginView(session: userSession).modifier(ScreenModifier())
                 }
                 else {
-                    OnboardingView(presentLoginView: {
-                        // Remember that the onboarding screen has already been viewed
-                        UserDefaults.standard.set(true, forKey: self.launchKeyForOnboarding)
+                    OnboardingView(onSkipped: {
+                        UserDefaults.standard.set(true, forKey: self.isOnboardingWasSkipped)
                         
                         withAnimation {
                             self.isLoginPagePresented = true
                         }
-                    }).modifier(PageModifier())
+                    }).modifier(ScreenModifier())
                 }
             }
         }
     }
+
+    private func isOnboardingAlreadyShowing() -> Bool {
+        let isOnboardingAlreadyShowing = UserDefaults.standard.bool(forKey: self.isOnboardingWasSkipped)
+        
+        if isOnboardingAlreadyShowing {
+            return true
+        }
+        else {
+            return isLoginPagePresented
+        }
+    }
 }
 
-struct PageModifier: ViewModifier {
+struct ScreenModifier: ViewModifier {
     func body(content: Content) -> some View {
         let appearanceTransition = AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top)) .combined(with: .scale)
         return content

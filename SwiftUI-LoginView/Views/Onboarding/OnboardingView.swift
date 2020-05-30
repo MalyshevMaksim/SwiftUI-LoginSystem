@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    var presentLoginView: (()->()) = {}
+    var onSkipped: (()->()) = {}
 
     var body: some View {
         GeometryReader { geometry in
@@ -27,7 +27,7 @@ struct OnboardingView: View {
                 Spacer()
                 Spacer()
                 
-                Button(action: { self.presentLoginView() }) {
+                Button(action: { self.onSkipped() }) {
                     Rectangle()
                         .fill(Color.init(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
                         .frame(height: 50, alignment: .center)
@@ -39,6 +39,7 @@ struct OnboardingView: View {
             }
         }
     }
+    
 }
 
 struct OnboardingViewController_Previews: PreviewProvider {
