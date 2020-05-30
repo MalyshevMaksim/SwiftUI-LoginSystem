@@ -16,7 +16,7 @@ struct LoginButtons: View {
         case verifivationError
     }
     
-    @ObservedObject var session: EmailAuthenticationCntroller
+    @ObservedObject var session: SessionCntroller
     @Binding var bindEmail: String
     @Binding var bindPassword:String
     
@@ -103,6 +103,6 @@ struct LoginButtons_Previews: PreviewProvider {
     @State static var email = ""
     @State static var password = ""
     static var previews: some View {
-        LoginButtons(session: EmailAuthenticationCntroller(), bindEmail: $email, bindPassword: $password)
+        LoginButtons(session: SessionCntroller(), bindEmail: $email, bindPassword: $password)
     }
 }

@@ -10,47 +10,47 @@ import SwiftUI
 import Firebase
 
 struct ContentView: View {
-    @ObservedObject var session = EmailAuthenticationCntroller()
-    @State var presentedLoginPage = false
-    private let initialLaunchKey = "isInitialLoginLaunch"
+    @ObservedObject var userSession = SessionCntroller()
+    @State private var isLoginPagePresented = false
+    private let launchKeyForOnboarding = "isOnboardingWasSkipped"
     
     init() {
         // Get the session object when entering the application
-        session.initialSession()
+        userSession.initialSession()
     }
     
     var body: some View {
         ZStack {
             // Give access to the main page of the application, if the user is logged in
-            if session.isLogin == true {
-                MainPageView(session: session)
-                    .animation(.spring())
-                    .transition(AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top))
-                    .combined(with: .scale))
+            if userSession.isValid() {
+                MainPageView(session: userSession).modifier(PageModifier())
             }
             else {
                 // Did not show the onboarding screen if it has already been viewed
-                if presentedLoginPage || UserDefaults.standard.bool(forKey: "isInitialLoginLaunch") {
-                    LoginView(session: session)
-                        .animation(.spring())
-                        .transition(AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top))
-                        .combined(with: .scale))
+                if isLoginPagePresented || UserDefaults.standard.bool(forKey: launchKeyForOnboarding) {
+                    LoginView(session: userSession).modifier(PageModifier())
                 }
                 else {
                     OnboardingView(presentLoginView: {
                         // Remember that the onboarding screen has already been viewed
-                        UserDefaults.standard.set(true, forKey: self.initialLaunchKey)
+                        UserDefaults.standard.set(true, forKey: self.launchKeyForOnboarding)
                         
                         withAnimation {
-                            self.presentedLoginPage = true
+                            self.isLoginPagePresented = true
                         }
-                    })
-                        .animation(.spring())
-                        .transition(AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top))
-                        .combined(with: .scale))
+                    }).modifier(PageModifier())
                 }
             }
         }
+    }
+}
+
+struct PageModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        let appearanceTransition = AnyTransition.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top)) .combined(with: .scale)
+        return content
+            .animation(.spring())
+            .transition(appearanceTransition)
     }
 }
 

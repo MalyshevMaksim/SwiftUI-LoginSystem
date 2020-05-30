@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		A048DB140422F5F45FF965DA /* Pods_SwiftUI_LoginView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F38359FA8C528B63190C42 /* Pods_SwiftUI_LoginView.framework */; };
 		B521687D2455431E00018F73 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B521687C2455431E00018F73 /* LoginButton.swift */; };
-		B526833B244BC84A001E2A3F /* EmailAuthenticationCntroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B526833A244BC84A001E2A3F /* EmailAuthenticationCntroller.swift */; };
+		B526833B244BC84A001E2A3F /* SessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B526833A244BC84A001E2A3F /* SessionController.swift */; };
 		B5288C27245868C5003DB81A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5288C26245868C5003DB81A /* ResetPasswordView.swift */; };
 		B5288C292458AEBF003DB81A /* ResetSuccessful.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5288C282458AEBE003DB81A /* ResetSuccessful.swift */; };
 		B54140392467BBB5000CAB39 /* KeyboardHeightPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54140382467BBB5000CAB39 /* KeyboardHeightPublisher.swift */; };
@@ -42,7 +42,7 @@
 		54F38359FA8C528B63190C42 /* Pods_SwiftUI_LoginView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUI_LoginView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B1D3FBD0C8A072638BA5B0B /* Pods-SwiftUI-LoginView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUI-LoginView.release.xcconfig"; path = "Target Support Files/Pods-SwiftUI-LoginView/Pods-SwiftUI-LoginView.release.xcconfig"; sourceTree = "<group>"; };
 		B521687C2455431E00018F73 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
-		B526833A244BC84A001E2A3F /* EmailAuthenticationCntroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthenticationCntroller.swift; sourceTree = "<group>"; };
+		B526833A244BC84A001E2A3F /* SessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionController.swift; sourceTree = "<group>"; };
 		B5288C26245868C5003DB81A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		B5288C282458AEBE003DB81A /* ResetSuccessful.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetSuccessful.swift; sourceTree = "<group>"; };
 		B54140382467BBB5000CAB39 /* KeyboardHeightPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHeightPublisher.swift; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				B5A683C32447BBB400892E03 /* PageControl.swift */,
-				B526833A244BC84A001E2A3F /* EmailAuthenticationCntroller.swift */,
+				B526833A244BC84A001E2A3F /* SessionController.swift */,
 				B5A683BD2447504700892E03 /* PageViewController.swift */,
 			);
 			path = Controllers;
@@ -383,7 +383,7 @@
 				B5BAD36F2452C70500FF45C7 /* MainPageView.swift in Sources */,
 				B5ABD32F244894C700C6A4F0 /* OnboardingDetailView.swift in Sources */,
 				B5ABD3312448E12B00C6A4F0 /* OnboardingView.swift in Sources */,
-				B526833B244BC84A001E2A3F /* EmailAuthenticationCntroller.swift in Sources */,
+				B526833B244BC84A001E2A3F /* SessionController.swift in Sources */,
 				B54140392467BBB5000CAB39 /* KeyboardHeightPublisher.swift in Sources */,
 				B5ABD345244A6A9300C6A4F0 /* TextFieldView.swift in Sources */,
 				B5F8B953244C926D00A453A6 /* OnboardingPageModel.swift in Sources */,

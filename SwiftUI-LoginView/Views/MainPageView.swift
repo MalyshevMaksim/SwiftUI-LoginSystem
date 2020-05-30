@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct MainPageView: View {
-    @ObservedObject var session: EmailAuthenticationCntroller
+    @ObservedObject var session: SessionCntroller
     @State private var presentedSignOutAlert = false
     
     var body: some View {
@@ -57,6 +57,6 @@ struct MainPageView: View {
 
 struct MainPageView_Previews: PreviewProvider {
     static var previews: some View {
-        MainPageView(session: EmailAuthenticationCntroller())
+        MainPageView(session: SessionCntroller())
     }
 }
