@@ -12,8 +12,7 @@ A training project on implementing an authentication system using Google Firebas
 - Received practical skills in developing the user interface using SwiftUI 
 - Got skills to work with Firebase Authentication
 - Got skills to work with Firebase Firestore
-- Got skills to work with Combine
-- Got skills to work with UserDefaults
+- Got skills to work with CocoaPods
 
 ## App screenshots
 
